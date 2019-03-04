@@ -1,0 +1,20 @@
+body{
+	background: #12967c;
+}
+.form{
+	width: 440px;
+	margin: 30vh auto;
+}
+h1{
+	text-align: center;
+	color: white;
+	padding-bottom: 10px;
+}
+form{
+	padding: 40px 20px 20px 20px;
+	border: 1px solid black;
+	background: white;
+}
+input.red{
+	border-color: red;
+}

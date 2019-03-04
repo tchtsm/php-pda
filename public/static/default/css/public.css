@@ -1,0 +1,55 @@
+.side-content{
+	margin-bottom: 40px;
+}
+.side-content div{
+	width: 100%;
+	margin-bottom: 15px;
+	border-bottom: 2px solid #d6d8d9;
+}
+.side-content div p{
+	width: 90px;
+	margin: 0;
+	font-size: 15px;
+/*	color: white;*/
+	background: #d6d8d9;
+	border-top-right-radius: 30px;
+	position: relative;
+	padding: 3px 8px;
+}
+.side-content ul{
+	width: 100%;
+	margin: ;
+	padding: 0;
+	list-style-type: none;
+}
+.side-content li{
+	width: 100%;
+	overflow: hidden;
+}
+img.cover{
+	width: 125px; 
+	height: 170px;
+	border: 1px solid #ddd;
+	padding: 3px
+}
+/*首页*/
+div.notice{
+	width: 100%;
+	margin-top: 20px;
+}
+div.notice div{
+	width: 100%;
+	border-bottom: 1px solid black;
+}
+div.notice ul{
+	margin: 0;
+	padding: 0;
+	list-style-type: none;
+}
+div.notice li{
+	padding: 5px;
+	border-bottom: 1px dashed #999;
+}
+div.notice li p{
+	float: right;
+}
