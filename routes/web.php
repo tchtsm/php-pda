@@ -19,24 +19,24 @@ Route::group(['namespace'=>'frontend'], function () {
 	Route::get('logout', 'UserController@logout')->name('f_logout');
 	Route::get('register', 'UserController@register')->name('f_register');
 	Route::post('register', 'UserController@register')->name('f_register');
-	Route::get('change-password', 'UserController@changePassword')->name('f_chan_pass');
-	Route::post('change-password', 'UserController@changePassword')->name('f_chan_pass');
-	Route::get('reset-password', 'UserController@resetPassword')->name('f_rese_pass');
-	Route::post('reset-password', 'UserController@resetPassword')->name('f_rese_pass');
+	Route::get('change-password', 'UserController@changePassword')->name('f_change_pass');
+	Route::post('change-password', 'UserController@changePassword')->name('f_change_pass');
+	Route::get('reset-password', 'UserController@resetPassword')->name('f_reset_pass');
+	Route::post('reset-password', 'UserController@resetPassword')->name('f_reset_pass');
 	// 文章文档
-	Route::get('article', 'ArticleController@list')->name('f_art_list');
+	Route::get('article', 'ArticleController@list')->name('f_article_list');
 	Route::get('article/{id}', 'ArticleController@content')->name('f_article_content');
-	Route::get('article/search/{key}', 'ArticleController@search')->name('f_art_search');
+	Route::get('article/search/{key}', 'ArticleController@search')->name('f_article_search');
 	// 看书推荐
 	Route::get('book', 'BookController@list')->name('f_book_list');
-	Route::get('book/{id}', 'BookController@content')->name('f_book_cont');
+	Route::get('book/{id}', 'BookController@content')->name('f_book_content');
 	Route::get('book/search', 'BookController@search')->name('f_book_search');
 	// 编辑软件
-	Route::get('software', 'SoftwareController@list')->name('f_soft_list');
+	Route::get('software', 'SoftwareController@list')->name('f_software_list');
 	//协会介绍
-	Route::get('introduce', 'OtherController@introduce')->name('f_othe_intr');
-	Route::get('about', 'OtherController@about')->name('f_othe_about');
-	Route::get('disclaimer', 'OtherController@disclaimer')->name('f_othe_disc');
+	Route::get('introduce', 'OtherController@introduce')->name('f_other_introduce');
+	Route::get('about', 'OtherController@about')->name('f_other_about');
+	Route::get('disclaimer', 'OtherController@disclaimer')->name('f_other_disclaimer');
 });
 
 

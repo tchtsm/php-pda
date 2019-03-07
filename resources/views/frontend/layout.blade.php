@@ -16,24 +16,24 @@
 	</a>
 	<ul class="navbar-nav">
 	    <li class="nav-item">
-			<a class="nav-link" href="{{ Route('f_arti_list') }}">文章文档</a>
+			<a class="nav-link" href="{{ route('f_article_list') }}">文章文档</a>
 	    </li>
 	    <li class="nav-item">
-			<a class="nav-link" href="{{ Route('f_book_list') }}">看书推荐</a>
+			<a class="nav-link" href="{{ route('f_book_list') }}">看书推荐</a>
 	    </li>
 	    <li class="nav-item">
-			<a class="nav-link" href="{{ Route('f_soft_list') }}">编辑软件</a>
+			<a class="nav-link" href="{{ route('f_software_list') }}">编辑软件</a>
 	    </li>
 	    <li class="nav-item">
-			<a class="nav-link" href="{{ Route('f_othe_intr') }}">协会介绍</a>
+			<a class="nav-link" href="{{ route('f_other_introduce') }}">协会介绍</a>
 	    </li>
 	</ul>
 	<ul class="navbar-nav ml-auto" style="margin-right:5vw">
 	    <li class="nav-item">
-			<a class="nav-link" href="#">登录</a>
+			<a class="nav-link" href="{{ route('f_login') }}">登录</a>
 	    </li>
 	    <li class="nav-item">
-			<a class="nav-link" href="#">注册</a>
+			<a class="nav-link" href="{{ route('f_register') }}">注册</a>
 	    </li>
 	</ul>
 </nav>
@@ -46,9 +46,9 @@
 	<div style="color:white;padding:12px 0;text-align:center">
 		© 2015-2018 Powered By Laravel 5.6
 		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-		<a href="{{ Route('f_othe_about') }}" style="color:white">关于我们</a>
+		<a href="{{ route('f_other_about') }}" style="color:white">关于我们</a>
 		&nbsp;&nbsp;
-		<a href="{{ Route('f_othe_disc') }}" style="color:white">免责声明</a>
+		<a href="{{ route('f_other_disclaimer') }}" style="color:white">免责声明</a>
 	</div>
 </footer>
 </body>

@@ -26,9 +26,28 @@ class UserController extends Controller
 		return view('frontend.article.content',['content'=>$content]);
 	}
 
-	public function register($key)
+	public function register(Request $request)
 	{
-		return view('frontend.user.register');
+		if ($request -> isMethod('get')) {
+			return view('frontend.user.register');
+		} else {
+			$rules = [
+				'name' => 'required|min:2|max10|unique',
+				'password' => 'required|min:6|max:16',
+			];
+
+			$messages = [
+				'name.required' => '请填写用户名',
+				'name.min' => '用户名不能少于2位',
+				'name.max' => '用户名多能多于10位',
+				'name.unique' => '用户名已存在',
+				'password.required' => '请填写密码',
+				'password.min' => '密码不能少于6位',
+				'password.max' => '密码多能多于16位',
+			];
+
+			$this -> validate($request, $rules, $messages);
+		}
 	}
 
 	public function changePassword($id)
