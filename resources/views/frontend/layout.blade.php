@@ -10,6 +10,7 @@
 	<script type="text/javascript" src="/static/default/js/bootstrap.min.js"></script>
 </head>
 <body>
+<div class="bg-top"></div>
 <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
 	<a class="navbar-brand" href="/" style="padding:0;margin-left:5vw">
 	    <img src="/static/default/images/Logo.png" alt="Logo" style="height:40px;">

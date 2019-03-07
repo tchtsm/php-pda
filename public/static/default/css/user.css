@@ -1,13 +1,7 @@
+/*登录页*/
 body{
 	margin: 0;
 	padding-top: 1px;
-}
-div.bg{
-	background: #343a40;
-	width: 100vw;
-	height: 40vh;
-	position: absolute;
-	z-index: -1;
 }
 h1{
 	display: block;
@@ -18,7 +12,13 @@ h1{
 	left: calc(50% - 100px);
 	top: 10vh;
 }
-/*登录页*/
+div.bg{
+	background: #343a40;
+	width: 100vw;
+	height: 40vh;
+	position: absolute;
+	z-index: -1;
+}
 form.login{
 	width: 20vw;
 	margin: 25vh auto;
