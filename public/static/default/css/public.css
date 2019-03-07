@@ -2,30 +2,53 @@
 body{
 	background: #eee;
 }
-/*右边栏*/
-.side-content{
-	margin-bottom: 40px;
-	background: white;
+div.bg-top{
+	width: 100%;
+	height: 4px;
+	background: linear-gradient(to right, red, orange, yellow, green, cyan, blue, purple);
 }
-.side-content div{
+/*框架 white-board 使用 主页 右边栏*/
+.white-board{
+	margin-bottom: 30px;
+	padding: 15px;
+	background: white;
+	border-radius: 5px;
+}
+.white-board div{
 	width: 100%;
 	border-bottom: 1px solid #d6d8d9;
 }
-.side-content div p{
+.white-board div p{
+	width: 70px;
 	margin: 0;
-	font-size: 18px;
+	font-size: 16px;
 	font-weight: bold;
 	border-bottom: 2px solid black;
 }
-.side-content ul{
+.white-board ul{
 	width: 100%;
-	margin: ;
 	padding: 0;
 	list-style-type: none;
 }
-.side-content li{
+.white-board li{
 	width: 100%;
 	overflow: hidden;
+}
+.white-board li a{
+	display: block;
+	background: #eee;
+	border-radius: 5px;
+	font-size: 16px;
+	color: black;
+	margin-top:5px;
+	padding: 5px 8px;
+}
+.white-board li a span{
+	display: block;
+	float: right;
+}
+.white-board li a:hover{
+	text-decoration: none;
 }
 img.cover{
 	width: 125px; 
@@ -33,29 +56,13 @@ img.cover{
 	border: 1px solid #ddd;
 	padding: 3px
 }
-/*首页*/
-div.bg-top{
-	width: 100%;
-	height: 4px;
-	background: linear-gradient(to right, red, orange, yellow, green, cyan, blue, purple);
+/*右边栏*/
+div.file li{
+	width: 45%;
+	float: left;
 }
-div.notice{
-	width: 100%;
-	margin-top: 20px;
-}
-div.notice div{
-	width: 100%;
-	border-bottom: 1px solid black;
-}
-div.notice ul{
-	margin: 0;
-	padding: 0;
-	list-style-type: none;
-}
-div.notice li{
-	padding: 5px;
-	border-bottom: 1px dashed #999;
-}
-div.notice li p{
-	float: right;
+/*主页*/
+.notice li a{
+	background: none;
+	border: 1px solid #eee;
 }
