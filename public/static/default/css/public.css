@@ -36,8 +36,8 @@ div.bg-top{
 }
 .white-board li a{
 	display: block;
-	background: #eee;
 	border-radius: 5px;
+	border: 1px solid gray;
 	font-size: 16px;
 	color: black;
 	margin-top:5px;
@@ -57,12 +57,14 @@ img.cover{
 	padding: 3px
 }
 /*右边栏*/
-div.file li{
-	width: 45%;
-	float: left;
+.file li{
+	width: 49%;
+	display: inline-block;
+}
+.file li a{
+	text-align: center;
 }
 /*主页*/
 .notice li a{
-	background: none;
-	border: 1px solid #eee;
+	border: 1px solid #ede;
 }

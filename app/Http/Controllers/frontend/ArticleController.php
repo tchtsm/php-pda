@@ -15,8 +15,8 @@ class ArticleController extends Controller
 	public function list()
 	{
 		$lists = DB::table('article')
-			->select('title','tag','user','createtime')
-			->orderBy('createtime','desc')
+			->select('title','tag','user','created_at')
+			->orderBy('created_at','desc')
 			->get();
 		return view('frontend.article.list',['lists'=>$lists]);
 	}

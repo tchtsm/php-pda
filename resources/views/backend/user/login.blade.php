@@ -9,7 +9,7 @@
 <body>
 	<div class="form">
 		<h1>程序设计协会后台管理</h1>
-		<form class="layui-form" action="{{ Route('b_login') }}" method="post">
+		<form class="layui-form" action="{{ route('b_login') }}" method="post">
 			{{ csrf_field() }}
 			<div class="layui-form-item">
 				<label class="layui-form-label">用户</label>
