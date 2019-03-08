@@ -9,7 +9,7 @@ div.bg-top{
 }
 /*框架 white-board 使用 主页 右边栏*/
 .white-board{
-	margin-bottom: 30px;
+	margin-bottom: 20px;
 	padding: 15px;
 	background: white;
 	border-radius: 5px;
@@ -67,4 +67,21 @@ img.cover{
 /*主页*/
 .notice li a{
 	border: 1px solid #ede;
+}
+.carousel{
+	padding-left: 0;
+}
+.welcome{
+	background: #343a40;
+	height: 250px;
+	border-radius: 5px;
+	padding: 15px;
+}
+.welcome p{
+	color: orange;
+	text-indent: 32px;
+}
+.welcome h5{
+	color: white;
+	text-align: center;
 }

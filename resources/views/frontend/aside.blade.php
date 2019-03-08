@@ -9,8 +9,6 @@
 	    	<li><a href="#">etergt</a></li>
 	    	<li><a href="#">etergt</a></li>
 	    	<li><a href="#">etergt</a></li>
-	    	<li><a href="#">etergt</a></li>
-	    	<li><a href="#">etergt</a></li>
 	    </ul>
 	</div>
 	<div class="white-board">

@@ -17,6 +17,7 @@ class CreateArticleTable extends Migration
             $table->increments('id');
             $table->string('title',50);
             $table->char('tag',8);
+            $table->string('cover',100);
             $table->text('content');
             $table->unsignedInteger('user');
             $table->unsignedTinyInteger('department');

@@ -10,7 +10,7 @@ h1{
 	text-align: center;
 	position: absolute;
 	left: calc(50% - 100px);
-	top: 10vh;
+	bottom: 75vh;
 }
 div.bg{
 	background: #343a40;

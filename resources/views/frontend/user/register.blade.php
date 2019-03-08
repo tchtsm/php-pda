@@ -5,7 +5,7 @@
 @endsection
 
 @section('content')
-<h1>欢迎登录</h1>
+<h1>欢迎加入</h1>
 <form class="login" action="" method="post">
 	<div class="form-group">
 		<label>学号</label><br>

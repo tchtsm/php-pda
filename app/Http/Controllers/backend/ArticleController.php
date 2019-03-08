@@ -15,7 +15,7 @@ class ArticleController extends Controller
 	public function list()
 	{
 		$lists = DB::table('article')
-			->select('id','title','tag','user','createtime')
+			->select('id','title','tag','cover','user','createtime')
 			->orderBy('createtime','desc')
 			->paginate(1);
 		return view('backend.article.list',['lists'=>$lists]);
