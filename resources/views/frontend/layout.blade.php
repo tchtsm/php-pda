@@ -31,12 +31,21 @@
 		    </li>
 		</ul>
 		<ul class="navbar-nav ml-auto" style="margin-right:30px;">
-		    <li class="nav-item">
-				<a class="nav-link" href="{{ route('f_login') }}">登录</a>
-		    </li>
-		    <li class="nav-item">
-				<a class="nav-link" href="{{ route('f_register') }}">注册</a>
-		    </li>
+			@if(isset(Auth::user() -> name))
+			    <li class="nav-item">
+					<a class="nav-link" href="{{ route('f_person', ['url' => Auth::user() -> id]) }}">{{ Auth::user() -> name }}</a>
+			    </li>
+			    <li class="nav-item">
+					<a class="nav-link" href="{{ route('f_logout') }}">退出登录</a>
+			    </li>
+			@else
+				<li class="nav-item">
+					<a class="nav-link" href="{{ route('f_login') }}">登录</a>
+			    </li>
+			    <li class="nav-item">
+					<a class="nav-link" href="{{ route('f_register') }}">注册</a>
+			    </li>
+			@endif
 		</ul>
 	</div>
 </nav>

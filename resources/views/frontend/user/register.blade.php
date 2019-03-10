@@ -6,14 +6,15 @@
 
 @section('content')
 <h1>欢迎加入</h1>
-<form class="login" action="" method="post">
+<form class="login" action="{{ route('f_register') }}" method="post">
+	@csrf
 	<div class="form-group">
-		<label>学号</label><br>
-		<input type="text" name="accout" placeholder="学号">
+		<label>姓名</label><br>
+		<input type="text" name="name" placeholder="姓名">
 	</div>
 	<div class="form-group">
 		<label>密码</label><br>
-		<input type="text" name="accout" placeholder="密码">
+		<input type="password" name="password" placeholder="密码">
 	</div>
 	<div class="form-group">
 		<button>登 录</button>

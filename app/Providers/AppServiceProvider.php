@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Facades\DB;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -13,7 +14,18 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        view()->composer('*',function($view)
+        {
+            $article_ups = DB::table('article')
+                ->select('id','title')
+                ->orderBy('created_at','desc')
+                ->limit(5)
+                ->get();
+            $tags = DB::table('tag')
+                ->select('id','name')
+                ->get();
+            $view->with(['tags'=>$tags,'article_ups'=>$article_ups]);
+        });
     }
 
     /**

@@ -15,12 +15,19 @@ class CreateUserTable extends Migration
     {
         Schema::create('user', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name');
+            $table->string('name',10);
+            $table->string('password');
+            $table->char('account',12)->unique();
+            $table->char('qq',15);
+            $table->char('phone',11);
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
+            $table->string('college',15);
+            $table->string('major',15);
+            $table->unsignedInteger('department_id');
             $table->rememberToken();
-            $table->timestamps();
+            $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
+            $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP'));
         });
     }
 

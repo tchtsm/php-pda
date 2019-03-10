@@ -44,11 +44,9 @@
 				<p>通知公告</p>
 			</div>
 			<ul>
-				<li><a href="3">3fhjgykgujkhjkh<span>办公室&nbsp;&nbsp;&nbsp;&nbsp;2017-02-15</span></a></li>
-				<li><a href="3">3fhjgykgujkhjkh<span>办公室&nbsp;&nbsp;&nbsp;&nbsp;2017-02-15</span></a></li>
-				<li><a href="3">3fhjgykgujkhjkh<span>办公室&nbsp;&nbsp;&nbsp;&nbsp;2017-02-15</span></a></li>
-				<li><a href="3">3fhjgykgujkhjkh<span>办公室&nbsp;&nbsp;&nbsp;&nbsp;2017-02-15</span></a></li>
-				<li><a href="3">3fhjgykgujkhjkh<span>办公室&nbsp;&nbsp;&nbsp;&nbsp;2017-02-15</span></a></li>
+				@foreach($notices as $notice)
+					<li><a href="3">{{ $notice -> title }}<span>办公室&nbsp;&nbsp;&nbsp;&nbsp;2017-02-15</span></a></li>
+				@endforeach
 			</ul>
 		</div>
 		<div class="col-md-12 white-board notice">
@@ -56,11 +54,9 @@
 				<p>推荐文章</p>
 			</div>
 			<ul>
-				<li><a href="3">3fhjgykgujkhjkh<span>2017-02-15</span></a></li>
-				<li><a href="3">3fhjgykgujkhjkh<span>2017-02-15</span></a></li>
-				<li><a href="3">3fhjgykgujkhjkh<span>2017-02-15</span></a></li>
-				<li><a href="3">3fhjgykgujkhjkh<span>2017-02-15</span></a></li>
-				<li><a href="3">3fhjgykgujkhjkh<span>2017-02-15</span></a></li>
+				@foreach($articles as $article)
+			    	<li><a href="/article/{{ $article -> id }}">{{ $article -> title }}</a></li>
+		    	@endforeach
 			</ul>
 		</div>
 	</div>

@@ -14,25 +14,60 @@ class ArticleController extends Controller
 
 	public function list()
 	{
-		$lists = DB::table('article')
-			->select('id','title','tag','cover','user','createtime')
-			->orderBy('createtime','desc')
-			->paginate(1);
+		$lists = DB::table('article as a')
+			->select('a.id','a.title','b.name as tag','a.user_id','a.created_at')
+			->leftJoin('tag as b', 'a.tag_id', '=', 'b.id')
+			->orderBy('a.created_at','desc')
+			->paginate(10);
 		return view('backend.article.list',['lists'=>$lists]);
 	}
 
-	public function add()
+	public function form(Request $request)
 	{
-		return view('backend.article.add');
+
+		$tags = DB::table('tag')
+			-> select('id','name')
+			-> get();
+
+		if ($request -> has('id')) {
+			$data = DB::table('article')
+				-> select('id','title','tag_id','cover','content')
+				-> where('id', $request -> id)
+				-> first();
+			if (is_null($data)) {
+				return '不存在的文章';
+			}else{
+				return view('backend.article.form', ['tags'=>$tags, 'data' => $data]);
+			}
+		}else{
+			return view('backend.article.form', ['tags'=>$tags]);
+		}
 	}
 
-	public function edit($id)
+	public function store(Request $request)
 	{
-		$lists = DB::table('article')
-			->select('title','tag','user','createtime')
-			->orderBy('createtime','desc')
-			->paginate(1);
-		return view('backend.article.list',['lists'=>$lists]);
+		$data = [
+			'title' => $request -> title,
+			'tag_id' => $request -> tag_id,
+			'cover' => $request -> file,
+			'content' => $request -> content,
+			'user_id' => 1,
+			'department_id' => 1,
+		];
+
+		try {
+			if ($request -> has('id')) {
+				unset($data['user_id'], $data['department_id']);
+				DB::table('article')
+					-> where('id', $request -> id)
+					-> update($data);
+			}else {
+				DB::table('article') -> insert($data);
+			}
+			return json_encode(array('txt'=>"保存成功",'status'=>200));
+		} catch (Exception $e) {
+			return json_encode(array('txt'=>"保存失败",'status'=>500));
+		}
 	}
 
 	public function search($txt)

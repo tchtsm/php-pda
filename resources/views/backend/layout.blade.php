@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>程序设计协会 | @yield('title')</title>
+	<title>程序设计协会@yield('title')</title>
 	<meta charset="utf-8">
 	<meta name="csrf-token" content="{{ csrf_token() }}">
 	<link rel="stylesheet" type="text/css" href="/static/admin/layui/css/layui.css">
@@ -27,7 +27,7 @@
 	    <div class="layui-side-scroll">
 			<!-- 左侧导航区域（可配合layui已有的垂直导航） -->
 			<ul class="layui-nav layui-nav-tree"  lay-filter="test">
-				<li class="layui-nav-item"><a href="{ Route::get('/') }">通知公告</a></li>
+				<li class="layui-nav-item"><a href="{{ route('b_notice_list') }}">通知公告</a></li>
 				<li class="layui-nav-item"><a href="{{ route('b_article_list') }}">文章管理</a></li>
 				<li class="layui-nav-item"><a href="">书籍管理</a></li>
 				<li class="layui-nav-item"><a href="">会员管理</a></li>
@@ -60,7 +60,6 @@
 	</div>
 </div>
 <script>
-//JavaScript代码区域
 layui.use(['element','jquery'], function(){
 	var element = layui.element;
 	var $ = layui.jquery;

@@ -16,7 +16,8 @@ class CreateTagTable extends Migration
         Schema::create('tag', function (Blueprint $table) {
             $table->increments('id');
             $table->char('name',20);
-            $table->timestamps();
+            $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
+            $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP'));
             $table->softDeletes();
         });
     }

@@ -30,8 +30,8 @@
 		<tr>
 			<td><a href="{{ Route('f_article_content',['id'=>$list->id]) }}">{{ $list->title }}</a></td>
 			<td>{{ $list->tag }}</td>
-			<td>{{ $list->user }}</td>
-			<td>{{ $list->createtime }}</td>
+			<td>{{ $list->user_id }}</td>
+			<td>{{ $list->created_at }}</td>
 			<td>
 				<a href="{{ Route('b_article_edit',['id'=>$list->id]) }}" class="layui-btn layui-btn-normal layui-btn-sm">编辑</a>
 				<a href="{{ Route('b_article_del',['id'=>$list->id]) }}" class="layui-btn layui-btn-danger layui-btn-sm">刪除</a>
@@ -40,22 +40,5 @@
 		@endforeach
 	</tbody>
 </table>
-{{ $lists->links() }}
-<div id="demo7"></div>
-<script>
-layui.use(['laypage', 'layer'], function(){
-  var laypage = layui.laypage
-  ,layer = layui.layer;
-
-  laypage.render({
-    elem: 'demo7',
-    count: 100,
-    prev：,
-    layout: ['count', 'prev', 'page', 'next', 'skip'],
-    jump: function(obj){
-      console.log(obj)
-    }
-  });
-});
-</script>
+{{ $lists->links('backend.page') }}
 @endsection

@@ -4,11 +4,9 @@
 		    <p>最新文章</p>
 		</div>
 	    <ul>
-	    	<li><a href="#">etergt</a></li>
-	    	<li><a href="#">etergt</a></li>
-	    	<li><a href="#">etergt</a></li>
-	    	<li><a href="#">etergt</a></li>
-	    	<li><a href="#">etergt</a></li>
+	    	@foreach($article_ups as $article_up)
+		    	<li><a href="/article/{{ $article -> id }}">{{ $article_up -> title }}</a></li>
+	    	@endforeach
 	    </ul>
 	</div>
 	<div class="white-board">
@@ -22,15 +20,9 @@
 	    	<p>文章归档</p>
 	    </div>
 	    <ul>
-			<li><a href="3">C/C++</a></li>
-			<li><a href="3">C/C++</a></li>
-			<li><a href="3">C/C++</a></li>
-			<li><a href="3">C/C++</a></li>
-			<li><a href="3">3fhjkgu</a></li>
-			<li><a href="3">3fhjgykgu</a></li>
-			<li><a href="3">hjgykgu</a></li>
-			<li><a href="3">3fhjgykgu</a></li>
-			<li><a href="3">3fhjgykgu</a></li>
+	    	@foreach($tags as $tag)
+				<li><a href="{{ route('f_article_list',['tag'=>$tag->id]) }}">{{ $tag -> name }}</a></li>
+			@endforeach
 		</ul>
 	</div>
 </div>

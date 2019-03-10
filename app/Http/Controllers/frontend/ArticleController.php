@@ -12,22 +12,31 @@ use Illuminate\Http\Request;
 class ArticleController extends Controller
 {
 
-	public function list()
+	public function list(Request $request)
 	{
-		$lists = DB::table('article')
-			->select('title','tag','user','created_at')
+		if ($request -> has('tag')) {
+			$lists = DB::table('article')
+			->select('title','cover','user_id','tag_id','content','created_at')
+			->where('tag_id',$request -> tag)
 			->orderBy('created_at','desc')
 			->get();
+		} else {
+			$lists = DB::table('article')
+			->select('title','cover','user_id','tag_id','content','created_at')
+			->orderBy('created_at','desc')
+			->get();
+		}
 		return view('frontend.article.list',['lists'=>$lists]);
 	}
 
 	public function content($id)
 	{
-		$content = DB::table('article')
-			->select('title','tag','user','createtime')
-			->where('id',$id)
+		$data = DB::table('article as a')
+			->select('a.title','b.name as tag','a.user_id as user','a.cover','a.content','a.created_at')
+			->leftJoin('tag as b', 'a.tag_id', '=', 'b.id')
+			->where('a.id',$id)
 			->first();
-		return view('frontend.article.content',['content'=>$content]);
+		return view('frontend.article.content',['data'=>$data]);
 	}
 
 	public function search($key)

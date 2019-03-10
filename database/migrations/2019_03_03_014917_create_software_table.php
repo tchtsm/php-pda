@@ -18,7 +18,8 @@ class CreateSoftwareTable extends Migration
             $table->string('name',20);
             $table->string('cover',100);
             $table->text('introduce');
-            $table->timestamps();
+            $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
+            $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP'));
             $table->softDeletes();
         });
     }

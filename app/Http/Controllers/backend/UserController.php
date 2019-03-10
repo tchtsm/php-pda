@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\backend;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
@@ -11,13 +12,6 @@ use Illuminate\Http\Request;
  */
 class UserController extends Controller
 {
-
-	protected $redirectTo = 'admin';
-
-	protected function guard()
-	{
-	    return Auth::guard('guard-name');
-	}
 
 	public function list() 
 	{

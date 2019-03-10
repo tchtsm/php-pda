@@ -31,22 +31,5 @@
 		@endforeach
 	</tbody>
 </table>
-{{ $lists->links() }}
-<div id="demo7"></div>
-<script>
-layui.use(['laypage', 'layer'], function(){
-  var laypage = layui.laypage
-  ,layer = layui.layer;
-
-  laypage.render({
-    elem: 'demo7',
-    count: 100,
-    prev：,
-    layout: ['count', 'prev', 'page', 'next', 'skip'],
-    jump: function(obj){
-      console.log(obj)
-    }
-  });
-});
-</script>
+{{ $lists->links('backend.page') }}
 @endsection

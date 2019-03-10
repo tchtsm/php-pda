@@ -12,7 +12,7 @@
 */
 Route::group(['namespace'=>'frontend'], function () {
 	// 首页
-	Route::get('', 'HomeController@index');
+	Route::get('/', 'HomeController@index');
 	//会员
 	Route::get('login', 'UserController@login')->name('f_login');
 	Route::post('login', 'UserController@login')->name('f_login');
@@ -23,10 +23,13 @@ Route::group(['namespace'=>'frontend'], function () {
 	Route::post('change-password', 'UserController@changePassword')->name('f_change_pass');
 	Route::get('reset-password', 'UserController@resetPassword')->name('f_reset_pass');
 	Route::post('reset-password', 'UserController@resetPassword')->name('f_reset_pass');
+	Route::post('person', 'UserController@person')->name('f_person');
+	//通知
+	Route::post('notice/{id}', 'NoticeController@content')->name('f_notice_content');
 	// 文章文档
 	Route::get('article', 'ArticleController@list')->name('f_article_list');
 	Route::get('article/{id}', 'ArticleController@content')->name('f_article_content');
-	Route::get('article/search/{key}', 'ArticleController@search')->name('f_article_search');
+	Route::get('article/search', 'ArticleController@search')->name('f_article_search');
 	// 看书推荐
 	Route::get('book', 'BookController@list')->name('f_book_list');
 	Route::get('book/{id}', 'BookController@content')->name('f_book_content');
@@ -45,13 +48,22 @@ Route::group(['prefix'=>'admin','namespace'=>'backend'], function () {
 
 	Route::get('login', 'UserController@login')->name('b_login');
 	Route::post('login', 'UserController@login')->name('b_login');
-	// Route::get('logout', Auth::logout());
+	//通知
+	Route::get('notice', 'NoticeController@list')->name('b_notice_list');
+	Route::get('notice/add', 'NoticeController@form')->name('b_notice_add');
+	Route::post('notice/add', 'NoticeController@store')->name('b_notice_add');
+	Route::get('notice/edit', 'NoticeController@form')->name('b_notice_edit');
+	Route::post('notice/edit', 'NoticeController@store')->name('b_notice_edit');
+	Route::get('notice/delete', 'NoticeController@delete')->name('b_notice_del');
+	Route::get('notice/search', 'NoticeController@search')->name('b_notice_search');
+	// 文章
 	Route::get('article', 'ArticleController@list')->name('b_article_list');
-	Route::get('article/add', 'ArticleController@add')->name('b_article_add');
-	Route::post('article/add', 'ArticleController@add')->name('b_article_add');
-	Route::get('article/edit/{id}', 'ArticleController@edit')->name('b_article_edit');
-	Route::post('article/edit', 'ArticleController@edit')->name('b_article_edit');
-	Route::get('article/delete/{id}', 'ArticleController@delete')->name('b_article_del');
+	Route::get('article/add', 'ArticleController@form')->name('b_article_add');
+	Route::post('article/add', 'ArticleController@store')->name('b_article_add');
+	Route::get('article/edit', 'ArticleController@form')->name('b_article_edit');
+	Route::post('article/edit', 'ArticleController@store')->name('b_article_edit');
+	Route::get('article/delete', 'ArticleController@delete')->name('b_article_del');
+	Route::get('article/search', 'ArticleController@search')->name('b_article_search');
 	// 看书推荐
 	Route::get('book', 'BookController@list')->name('b_book_list');
 	Route::get('book/{id}', 'BookController@content')->name('b_book_content');
@@ -62,5 +74,7 @@ Route::group(['prefix'=>'admin','namespace'=>'backend'], function () {
 	Route::post('tag/add', 'TagController@store')->name('b_tag_store');
 	Route::get('tag/edit', 'TagController@form')->name('b_tag_form');
 	Route::post('tag/edit', 'TagController@store')->name('b_tag_store');
-	Route::get('tag/{id}', 'TagController@delete')->name('b_tag_del');
+	Route::get('tag/delete', 'TagController@delete')->name('b_tag_del');
+	// 上传
+	Route::post('uplode', 'UplodeController@image')->name('b_uplode_img');
 });

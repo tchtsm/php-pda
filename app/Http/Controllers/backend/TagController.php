@@ -17,7 +17,7 @@ class TagController extends Controller
 			->select('id','name')
 			->whereNull('deleted_at')
 			->orderBy('id','asc')
-			->paginate(1);
+			->paginate(10);
 		return view('backend.tag.list',['lists'=>$lists]);
 	}
 

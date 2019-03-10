@@ -2,12 +2,21 @@
 
 namespace App\Http\Controllers\frontend;
 
-use App\Http\Controllers\frontend\Controller;
+use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
 	public function index()
 	{
-		return view('frontend.home.index');
+		$notices = DB::table('notice')
+			->select('id','title')
+			->orderBy('created_at','desc')
+			->limit(5)
+			->get();
+		$articles = DB::table('article')
+			->select('id','title')
+			->limit(5)
+			->get();
+		return view('frontend.home.index',['notices'=>$notices,'articles'=>$articles]);
 	}
 }
