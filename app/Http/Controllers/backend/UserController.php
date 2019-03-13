@@ -13,6 +13,11 @@ use Illuminate\Http\Request;
 class UserController extends Controller
 {
 
+	protected function guard()
+	{
+	    return Auth::guard('admin');
+	}
+
 	public function list() 
 	{
 		$lists = DB::table('user')
@@ -27,61 +32,35 @@ class UserController extends Controller
 		} else {
 			// 规则
 	        $rules = [
-	            'name' => 'required',
-	            'password' => 'required'
+	            'name' => 'required|exists:user|between:2,10',
+	            'password' => 'required|between:6,16'
 	        ];
 
 	        // 自定义消息
 	        $messages = [
-	            'name.required' => '请输入密码用户名',
-	            'password' => '请输入密码'
+	            'name.required' => '请输入用户名',
+	            'name.exists' => '不存在此用户',
+	            'name.between' => '请输入2-10位用户名',
+	            'password.required' => '请输入密码',
+	            'password.between' => '请输入6-16位密码'
 	        ];
 
 	        $this->validate($request, $rules, $messages);
 
-	        $name = $request->input('name');
-	        $password = $request->input('password');
+	        $name = $request -> name;
+	        $password = $request -> password;
 
-	        if (!\Auth::attempt(['name' => $name, 'password' => $password])) {
-	            return ['msg' => '登陆失败'];
+	        if (Auth::attempt(['name' => $name, 'password' => $password])) {
+		        return redirect() -> route('admin');
+	        } else {
+	            return view('backend.user.login', ['msg' => '密码错误']);
 	        }
-	        return redirect()->route('admin');
-		}
-    }
-
-    public function register(Request $request)
-	{
-		if ($request->isMethod('get')) {
-	        return view('backend.user.register');
-		} else {
-			// 规则
-	        $rules = [
-	            'name' => 'required',
-	            'password' => 'required',
-	            'con-password' => 'required'
-	        ];
-
-	        // 自定义消息
-	        $messages = [
-	            'name.required' => '请输入密码用户名',
-	            'password' => '请输入密码'
-	        ];
-
-	        $this->validate($request, $rules, $messages);
-
-	        $name = $request->input('name');
-	        $password = $request->input('password');
-
-	        if (!\Auth::attempt(['name' => $name, 'password' => $password])) {
-	            return ['msg' => '登陆失败'];
-	        }
-	        return redirect()->route('admin');
 		}
     }
 
 	public function logout()
 	{
 		Auth::logout();
-		return redicte();
+		return view('backend.user.login', ['msg' => '退出成功']);
 	}
 }

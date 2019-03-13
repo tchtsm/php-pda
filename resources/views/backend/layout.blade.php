@@ -18,9 +18,9 @@
 	    </ul>
 	    <ul class="layui-nav layui-layout-right">
 	     	<li class="layui-nav-item">
-	        	<a href="javascript:;">管理员</a>
+	        	<a href="javascript:;">{{ Auth::user() -> name }}</a>
 	    	</li>
-	    	<li class="layui-nav-item"><a href="">退出</a></li>
+	    	<li class="layui-nav-item"><a href="{{ route('b_logout') }}">退出</a></li>
 	    </ul>
 	</div>
 	<div class="layui-side layui-bg-black">

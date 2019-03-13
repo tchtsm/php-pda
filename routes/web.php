@@ -44,10 +44,11 @@ Route::group(['namespace'=>'frontend'], function () {
 
 
 Route::group(['prefix'=>'admin','namespace'=>'backend'], function () {
-	Route::get('', 'Controller@index')->name('admin');
+	Route::get('/', 'Controller@index')->name('admin');
 
 	Route::get('login', 'UserController@login')->name('b_login');
 	Route::post('login', 'UserController@login')->name('b_login');
+	Route::get('logout', 'UserController@logout')->name('b_logout');
 	//通知
 	Route::get('notice', 'NoticeController@list')->name('b_notice_list');
 	Route::get('notice/add', 'NoticeController@form')->name('b_notice_add');

@@ -2,7 +2,7 @@ body{
 	background: #12967c;
 }
 .form{
-	width: 440px;
+	width: 500px;
 	margin: 30vh auto;
 }
 h1{
@@ -17,4 +17,7 @@ form{
 }
 input.red{
 	border-color: red;
+}
+.text-red{
+	color: #FF5722;
 }

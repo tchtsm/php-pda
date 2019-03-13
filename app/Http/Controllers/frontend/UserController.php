@@ -54,31 +54,60 @@ class UserController extends Controller
 			return view('frontend.user.register');
 		} else {
 			$rules = [
-				'name' => 'required|min:2|max:10|unique:user',
-				'password' => 'required|min:6|max:16',
+				'account' => 'required|numeric|size:12',
+				'name' => 'required|min:2|max:10',
+				'password' => 'required|min:6|max:16|confirmed',
+				'password_confirmation' => 'required|same:password',
+				'college' => 'required|string',
+				'major' => 'required|string',
+				'phone' => 'required|numeric|size:11',
+				'qq' => 'required|numeric|between:8,12',
+				'email' => 'required|email|unique:user',
 			];
 
 			$messages = [
-				'name.required' => '请填写用户名',
-				'name.min' => '用户名不能少于2位',
-				'name.max' => '用户名多能多于10位',
-				'name.unique' => '用户名已存在',
+				'account.required' => '请填写学号',
+				'account.numeric' => '学号必须是12纯数字',
+				'account.size' => '学号必须是12纯数字',
+				'name.required' => '请填写姓名',
+				'name.min' => '姓名不能少于2位',
+				'name.max' => '姓名多能多于10位',
 				'password.required' => '请填写密码',
 				'password.min' => '密码不能少于6位',
 				'password.max' => '密码多能多于16位',
+				'password.confirmed' => '请填写确认密码',
+				'password_confirmation.required' => '请填写确认密码',
+				'password_confirmation.same' => '两次密码不一致',
+				'college.required' => '请填写学院',
+				'college.string' => '学院不能有数字',
+				'major.required' => '请填写专业',
+				'major.string' => '专业不能有数字',
+				'phone.required' => '请填写手机号',
+				'phone.size' => '手机号必须是11纯数字',
+				'qq.required' => '请填写qq',
+				'qq.numeric' => 'qq必须是8-12纯数字',
+				'qq.between' => 'qq必须是8-12纯数字',
+				'email.required' => '请填写邮箱',
+				'email.email' => '邮箱地址不正确',
+				'email.unique' => '邮箱已存在',
 			];
 
 			$this -> validate($request, $rules, $messages);
 
 			$data = [
+				'account' => $request -> account,
 				'name' => $request -> name,
 				'password' => bcrypt($request -> password),
-				'email' => '2388467590@qq.com'
+				'college' => $request -> college,
+				'major' => $request -> major,
+				'phone' => $request -> phone,
+				'qq' => $request -> qq,
+				'email' => $request -> email,
 			];
 
 			try {
 				DB::table('user') -> insert($data);
-				return redirect() -> route('f_login');
+				return route('f_login');
 			} catch (Exception $e) {
 				return '注册失败，请联系管理员';
 			}
