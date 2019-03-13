@@ -28,8 +28,8 @@
 						<img src="{{ $list->cover }}" class="cover" onerror="this.src='/static/default/images/img-error.jpg'">
 					</div>
 					<div class="col-md-6">
-						<h4><a href="{{ Route('f_book_cont',['id'=>$list->id]) }}">{{ $list->title }}</a></h4>
-						<p>来自：{{ $list->user }}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;部门：{{ $list->department }}<br>
+						<h4><a href="{{ Route('f_book_content',['id'=>$list->id]) }}">{{ $list->title }}</a></h4>
+						<p>来自：{{ $list->user_id }}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;部门：<br>
 						简介：{{ $list->content }}</p>
 					</div>
 				</div>

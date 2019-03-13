@@ -1,7 +1,7 @@
 @extends('backend.layout')
 @section('content')
 <div class="btn">
-	<a href="" class="layui-btn">添加</a>
+	<a href="{{ route('b_book_add') }}" class="layui-btn">添加</a>
 	<form action="" style="float:right">
 		<input type="text" name="title" required  lay-verify="required" placeholder="请输入搜索內容" autocomplete="off" class="layui-input" style="width:300px;float:left">
 		<button class="layui-btn layui-btn-warm">搜索</button>

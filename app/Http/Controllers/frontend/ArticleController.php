@@ -14,15 +14,16 @@ class ArticleController extends Controller
 
 	public function list(Request $request)
 	{
+		$lists = null;
 		if ($request -> has('tag')) {
 			$lists = DB::table('article')
-			->select('title','cover','user_id','tag_id','content','created_at')
+			->select('id','title','cover','user_id','tag_id','content','created_at')
 			->where('tag_id',$request -> tag)
 			->orderBy('created_at','desc')
 			->get();
 		} else {
 			$lists = DB::table('article')
-			->select('title','cover','user_id','tag_id','content','created_at')
+			->select('id','title','cover','user_id','tag_id','content','created_at')
 			->orderBy('created_at','desc')
 			->get();
 		}

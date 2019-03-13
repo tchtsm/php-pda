@@ -50,7 +50,7 @@ class UserController extends Controller
 	        $name = $request -> name;
 	        $password = $request -> password;
 
-	        if (Auth::attempt(['name' => $name, 'password' => $password])) {
+	        if ($this->guard()->attempt(['name' => $name, 'password' => $password])) {
 		        return redirect() -> route('admin');
 	        } else {
 	            return view('backend.user.login', ['msg' => '密码错误']);
@@ -60,7 +60,9 @@ class UserController extends Controller
 
 	public function logout()
 	{
-		Auth::logout();
+		$this->guard()->logout();
+        // $request->session()->forget($this->guard()->getName());
+        $request->session()->regenerate();
 		return view('backend.user.login', ['msg' => '退出成功']);
 	}
 }

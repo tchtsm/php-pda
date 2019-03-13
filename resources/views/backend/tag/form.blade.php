@@ -1,29 +1,27 @@
 @extends('backend.layout')
 
 @section('title')
-{{ isset($content) ? '修改标签' : '标签添加' }}
+ | {{ isset($data) ? '修改标签' : '添加标签' }}
 @endsection
 
 @section('content')
-<a href="{{ route('b_tag_list') }}" class="layui-btn">返回</a>
+<a href="{{ Route('b_tag_list') }}" class="layui-btn layui-btn-sm layui-btn-danger">返回</a>
 <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
- 	<legend>标签添加</legend>
+ 	<legend>{{ isset($content) ? '修改标签' : '添加标签' }}</legend>
 </fieldset>
-<form class="layui-form" action="{{ route('b_tag_store') }}">
-	@if(isset($content))
-		<input type="hidden" name="id" value="{{ $content -> id }}">
+<form class="layui-form" action="{{ isset($data) ? route('b_tag_edit') : route('b_tag_add')}}">
+	@if(isset($data))
+		<input type="hidden" name="id" value="{{ $data -> id }}">
 	@endif
 	<div class="layui-form-item">
 	    <label class="layui-form-label">名称</label>
-	    <div class="layui-input-inline">
-			<input type="text" name="name" required  lay-verify="required" placeholder="请输入名称" autocomplete="off" class="layui-input"  >
+	    <div class="layui-input-block">
+			<input type="text" name="name" required  lay-verify="required" placeholder="请输入名称" autocomplete="off" class="layui-input" value="{{ $data -> name }}">
 		</div>
-		<div class="layui-form-mid layui-word-aux">请填写6到12位密码</div>
 	</div>
 	<div class="layui-form-item">
 		<div class="layui-input-block">
 			<button class="layui-btn" lay-submit lay-filter="formDemo">立即提交</button>
-			<button type="reset" class="layui-btn layui-btn-primary">重置</button>
 		</div>
 	</div>
 </form>
@@ -40,13 +38,13 @@ layui.use(['form','jquery'], function(){
 		$.ajax({
 			url: action,
 			data: datas,
-			type: 'POST',
-			dataType: 'JSON',
+			type: 'post',
+			dataType: 'json',
 			success:function(msg){
 				if (msg.status==200) {
-					layer.msg(msg.txt);
+					layer.msg(msg.txt, {icon:1});
 				}else{
-					layer.msg(msg.txt);
+					layer.msg(msg.txt, {icon:2, anim:6});
 				}
 			},
 			error:function(){

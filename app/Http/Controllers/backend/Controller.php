@@ -11,7 +11,7 @@ class Controller extends BaseController
 	protected $redirectTo = '/admin/login';
 
 	public function __construct(){
-	    $this->middleware('auth');
+	    $this->middleware('auth:admin');
 	}
 
 	protected function guard()

@@ -45,10 +45,12 @@ Route::group(['namespace'=>'frontend'], function () {
 
 Route::group(['prefix'=>'admin','namespace'=>'backend'], function () {
 	Route::get('/', 'Controller@index')->name('admin');
-
+	// 用户管理
 	Route::get('login', 'UserController@login')->name('b_login');
 	Route::post('login', 'UserController@login')->name('b_login');
 	Route::get('logout', 'UserController@logout')->name('b_logout');
+	Route::get('user/member', 'UserController@member')->name('b_user_member');
+	Route::get('user/manager', 'UserController@manager')->name('b_user_manager');
 	//通知
 	Route::get('notice', 'NoticeController@list')->name('b_notice_list');
 	Route::get('notice/add', 'NoticeController@form')->name('b_notice_add');
@@ -67,14 +69,24 @@ Route::group(['prefix'=>'admin','namespace'=>'backend'], function () {
 	Route::get('article/search', 'ArticleController@search')->name('b_article_search');
 	// 看书推荐
 	Route::get('book', 'BookController@list')->name('b_book_list');
-	Route::get('book/{id}', 'BookController@content')->name('b_book_content');
-	Route::get('book/search', 'BookController@search')->name('b_book_search');
+	Route::get('book/add', 'BookController@form')->name('b_book_add');
+	Route::post('book/add', 'BookController@store')->name('b_book_add');
+	Route::get('book/edit', 'BookController@form')->name('b_book_edit');
+	Route::post('book/edit', 'BookController@store')->name('b_book_edit');
+	Route::get('book/delete', 'BookController@delete')->name('b_book_del');
+	//软件管理
+	Route::get('software', 'SoftwareController@list')->name('b_software_list');
+	Route::get('software/add', 'SoftwareController@form')->name('b_software_add');
+	Route::post('software/add', 'SoftwareController@store')->name('b_software_add');
+	Route::get('software/edit', 'SoftwareController@form')->name('b_software_edit');
+	Route::post('software/edit', 'SoftwareController@store')->name('b_software_edit');
+	Route::get('software/delete', 'SoftwareController@delete')->name('b_software_del');
 	// 标签
 	Route::get('tag', 'TagController@list')->name('b_tag_list');
-	Route::get('tag/add', 'TagController@form')->name('b_tag_form');
-	Route::post('tag/add', 'TagController@store')->name('b_tag_store');
-	Route::get('tag/edit', 'TagController@form')->name('b_tag_form');
-	Route::post('tag/edit', 'TagController@store')->name('b_tag_store');
+	Route::get('tag/add', 'TagController@form')->name('b_tag_add');
+	Route::post('tag/add', 'TagController@store')->name('b_tag_add');
+	Route::get('tag/edit', 'TagController@form')->name('b_tag_edit');
+	Route::post('tag/edit', 'TagController@store')->name('b_tag_edit');
 	Route::get('tag/delete', 'TagController@delete')->name('b_tag_del');
 	// 上传
 	Route::post('uplode', 'UplodeController@image')->name('b_uplode_img');

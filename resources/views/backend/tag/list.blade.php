@@ -1,7 +1,7 @@
 @extends('backend.layout')
 @section('content')
 <div class="btn">
-	<a href="{{ route('b_tag_form') }}" class="layui-btn">添加</a>
+	<a href="{{ route('b_tag_add') }}" class="layui-btn">添加</a>
 	<form action="" style="float:right">
 		<input type="text" name="title" required  lay-verify="required" placeholder="请输入搜索內容" autocomplete="off" class="layui-input" style="width:300px;float:left">
 		<button class="layui-btn layui-btn-warm">搜索</button>
@@ -24,7 +24,7 @@
 		<tr>
 			<td>{{ $list->name }}</td>
 			<td>
-				<a href="{{ route('b_tag_form',['id'=>$list->id]) }}" class="layui-btn layui-btn-normal layui-btn-sm">编辑</a>
+				<a href="{{ route('b_tag_edit',['id'=>$list->id]) }}" class="layui-btn layui-btn-normal layui-btn-sm">编辑</a>
 				<a href="{{ route('b_tag_del',['id'=>$list->id]) }}" class="layui-btn layui-btn-danger layui-btn-sm">刪除</a>
 			</td>
 		</tr>

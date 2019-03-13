@@ -24,14 +24,14 @@ class TagController extends Controller
 	public function form(Request $request)
 	{
 		if ($request -> has('id')) {
-			$content = DB::table('tag')
+			$data = DB::table('tag')
 				-> select('id','name')
 				-> where('id', $request -> id)
 				-> first();
-			if (is_null($content)) {
-				return '无该模块';
+			if (is_null($data)) {
+				return '无该标签';
 			}else{
-				return view('backend.tag.form', ['content' => $content]);
+				return view('backend.tag.form', ['data' => $data]);
 			}
 		}else{
 			return view('backend.tag.form');
@@ -42,14 +42,14 @@ class TagController extends Controller
 	{
 
 		$rules = [
-			'name' => 'required|max:20|min2|unique'
+			'name' => 'required|max:20|min:2|unique:tag'
 		];
 
 		$messages = [
 			'name.required' => '请输入名称',
-			'name.max' => '名称不能多于：max',
-			'name.min' => '名称不能少于：min',
-			'name.unique' => '名称已经存在'
+			'name.max' => '名称不能多于20位',
+			'name.min' => '名称不能少于2位',
+			'name.unique' => '该标签已经存在'
 		];
 
 		$this->validate($request, $rules, $messages);
@@ -64,7 +64,7 @@ class TagController extends Controller
 					-> where('id', $request -> id)
 					-> update($data);
 			}else {
-				DB::table('tag') -> insert('$data');
+				DB::table('tag') -> insert($data);
 			}
 			return json_encode(array('status'=>200, 'txt'=>'保存成功'));
 		} catch (Exception $e) {

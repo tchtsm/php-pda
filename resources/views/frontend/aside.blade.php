@@ -5,7 +5,7 @@
 		</div>
 	    <ul>
 	    	@foreach($article_ups as $article_up)
-		    	<li><a href="/article/{{ $article -> id }}">{{ $article_up -> title }}</a></li>
+		    	<li><a href="/article/{{ $article_up -> id }}">{{ $article_up -> title }}</a></li>
 	    	@endforeach
 	    </ul>
 	</div>

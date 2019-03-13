@@ -29,10 +29,11 @@
 			<ul class="layui-nav layui-nav-tree"  lay-filter="test">
 				<li class="layui-nav-item"><a href="{{ route('b_notice_list') }}">通知公告</a></li>
 				<li class="layui-nav-item"><a href="{{ route('b_article_list') }}">文章管理</a></li>
-				<li class="layui-nav-item"><a href="">书籍管理</a></li>
-				<li class="layui-nav-item"><a href="">会员管理</a></li>
-				<li class="layui-nav-item"><a href="">日志管理</a></li>
-				<li class="layui-nav-item"><a href="">部门管理</a></li>
+				<li class="layui-nav-item"><a href="{{ route('b_book_list') }}">书籍管理</a></li>
+				<li class="layui-nav-item"><a href="{{ route('b_software_list') }}">软件管理</a></li>
+				<li class="layui-nav-item"><a href="{{ route('b_user_member') }}">会员管理</a></li>
+				<li class="layui-nav-item"><a href="javascript:;">日志管理</a></li>
+				<li class="layui-nav-item"><a href="javascript:;">部门管理</a></li>
 				<li class="layui-nav-item">
 		        	<a class="" href="javascript:;">基本管理</a>
 		        	<dl class="layui-nav-child">
@@ -42,7 +43,7 @@
 		        <li class="layui-nav-item">
 		        	<a class="" href="javascript:;">系统管理</a>
 		        	<dl class="layui-nav-child">
-			            <dd><a href="javascript:;">用户管理</a></dd>
+			            <dd><a href="{{ route('b_user_manager') }}">用户管理</a></dd>
 			            <dd><a href="javascript:;">部门管理</a></dd>
 			            <dd><a href="javascript:;">权限管理</a></dd>
 		        	</dl>
