@@ -5,6 +5,7 @@
 	<meta charset="utf-8">
 	<link rel="stylesheet" type="text/css" href="/static/admin/layui/css/layui.css">
 	<link rel="stylesheet" type="text/css" href="/static/admin/css/login.css">
+	<link rel="icon" type="image/x-icon" href="/static/default/images/icon.png">
 </head>
 <body>
 	<div class="form">

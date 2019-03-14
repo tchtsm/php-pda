@@ -50,17 +50,13 @@
 	<div class="layui-form-item layui-form-text">
 		<label class="layui-form-label">简介</label>
 		<div class="layui-input-block">
-			<textarea class="layui-textarea" name="intro" lay-verify="menu" placeholder="请输入简介">
-		    	{{ isset($data) ? $data->intro : '' }}
-			</textarea>
+			<textarea class="layui-textarea" name="intro" lay-verify="menu" placeholder="请输入简介">{{ isset($data) ? $data->intro : '' }}</textarea>
 		</div>
 	</div>
 	<div class="layui-form-item layui-form-text">
 		<label class="layui-form-label">目录</label>
 		<div class="layui-input-block">
-			<textarea class="layui-textarea" name="menu" lay-verify="menu" placeholder="请输入目录">
-		    	{{ isset($data) ? $data->menu : '' }}
-			</textarea>
+			<textarea class="layui-textarea" name="menu" lay-verify="menu" placeholder="请输入目录">{{ isset($data) ? $data->menu : '' }}</textarea>
 		</div>
 	</div>
 	<div class="layui-form-item">

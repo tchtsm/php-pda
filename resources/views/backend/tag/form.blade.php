@@ -16,7 +16,7 @@
 	<div class="layui-form-item">
 	    <label class="layui-form-label">名称</label>
 	    <div class="layui-input-block">
-			<input type="text" name="name" required  lay-verify="required" placeholder="请输入名称" autocomplete="off" class="layui-input" value="{{ $data -> name }}">
+			<input type="text" name="name" required  lay-verify="required" placeholder="请输入名称" autocomplete="off" class="layui-input" value="{{ isset($data) ? $data->name : '' }}">
 		</div>
 	</div>
 	<div class="layui-form-item">

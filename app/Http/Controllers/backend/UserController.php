@@ -65,4 +65,16 @@ class UserController extends Controller
         $request->session()->regenerate();
 		return view('backend.user.login', ['msg' => '退出成功']);
 	}
+
+	public function member(){
+		$list = DB::table('user')
+			->select('*')
+			->get();
+	}
+
+	public function manager(){
+		$list = DB::table('user')
+			->select('*')
+			->get();
+	}
 }
