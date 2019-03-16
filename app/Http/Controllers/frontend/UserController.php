@@ -54,21 +54,20 @@ class UserController extends Controller
 			return view('frontend.user.register');
 		} else {
 			$rules = [
-				'account' => 'required|numeric|size:12',
+				'account' => 'required|regex:/\d{12}/',
 				'name' => 'required|min:2|max:10',
 				'password' => 'required|min:6|max:16|confirmed',
 				'password_confirmation' => 'required|same:password',
 				'college' => 'required|string',
 				'major' => 'required|string',
-				'phone' => 'required|numeric|size:11',
-				'qq' => 'required|numeric|between:8,12',
+				'phone' => 'required|regex:/^1\d{10}/',
+				'qq' => 'required|regex:/\d{8,12}/',
 				'email' => 'required|email|unique:user',
 			];
 
 			$messages = [
 				'account.required' => '请填写学号',
-				'account.numeric' => '学号必须是12纯数字',
-				'account.size' => '学号必须是12纯数字',
+				'account.regex' => '学号必须是12位纯数字',
 				'name.required' => '请填写姓名',
 				'name.min' => '姓名不能少于2位',
 				'name.max' => '姓名多能多于10位',
@@ -83,15 +82,15 @@ class UserController extends Controller
 				'major.required' => '请填写专业',
 				'major.string' => '专业不能有数字',
 				'phone.required' => '请填写手机号',
-				'phone.size' => '手机号必须是11纯数字',
+				'phone.size' => '请填写正确的手机号',
 				'qq.required' => '请填写qq',
-				'qq.numeric' => 'qq必须是8-12纯数字',
-				'qq.between' => 'qq必须是8-12纯数字',
+				'qq.regex' => 'qq必须是8-12纯数字',
 				'email.required' => '请填写邮箱',
 				'email.email' => '邮箱地址不正确',
 				'email.unique' => '邮箱已存在',
 			];
 
+			$request->session()->reflash();
 			$this -> validate($request, $rules, $messages);
 
 			$data = [
@@ -103,11 +102,14 @@ class UserController extends Controller
 				'phone' => $request -> phone,
 				'qq' => $request -> qq,
 				'email' => $request -> email,
+				'department_id' => 5,
+				'last_login_at' => '2019-01-11 00:00:00',
+				'last_login_ip' => '[::1]',
 			];
 
 			try {
 				DB::table('user') -> insert($data);
-				return route('f_login');
+				return redirect() -> route('f_login');
 			} catch (Exception $e) {
 				return '注册失败，请联系管理员';
 			}

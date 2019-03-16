@@ -12,7 +12,7 @@
 		<div class="col-md-6">
 			<div class="form-group">
 				<label for="account">学号</label>
-				<input type="text" class="form-control {{ $errors->has('account') ? 'is-invalid' : '' }}" name="account" id="account" placeholder="学号">
+				<input type="text" class="form-control {{ $errors->has('account') ? 'is-invalid' : '' }}" name="account" id="account" placeholder="学号" value="{{ old('name') }}">
 				@if ($errors->has('account'))
 					<span class="help-block" role="alert">
 						<p class="text-danger">{{ $errors->first('account') }}</p>

@@ -26,6 +26,8 @@ class CreateUserTable extends Migration
             $table->string('major',15);
             $table->unsignedInteger('department_id');
             $table->rememberToken();
+            $table->string('last_login_ip',15);
+            $table->dateTime('last_login_at');
             $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP'));
         });

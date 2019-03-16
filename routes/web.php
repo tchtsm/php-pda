@@ -45,10 +45,11 @@ Route::group(['namespace'=>'frontend'], function () {
 
 Route::group(['prefix'=>'admin','namespace'=>'backend'], function () {
 	Route::get('/', 'Controller@index')->name('admin');
-	// 用户管理
-	Route::get('login', 'UserController@login')->name('b_login');
-	Route::post('login', 'UserController@login')->name('b_login');
-	Route::get('logout', 'UserController@logout')->name('b_logout');
+	// 管理员
+	Route::get('login', 'AdminController@login')->name('b_login');
+	Route::post('login', 'AdminController@login')->name('b_login');
+	Route::get('logout', 'AdminController@logout')->name('b_logout');
+	//用户
 	Route::get('user/member', 'UserController@member')->name('b_user_member');
 	Route::get('user/manager', 'UserController@manager')->name('b_user_manager');
 	//通知
