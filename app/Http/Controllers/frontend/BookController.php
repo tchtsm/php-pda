@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\frontend;
 
-use App\Http\Controllers\frontend\Controller;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 
@@ -17,7 +16,7 @@ class BookController extends Controller
 		$lists = DB::table('book')
 			->select('id','name','author','cover','pubtime','introduce','download')
 			->orderBy('id','ace')
-			->get();
+			->paginate(10);
 		return view('frontend.book.list',['lists'=>$lists]);
 	}
 
@@ -34,9 +33,9 @@ class BookController extends Controller
 	{
 		$lists = DB::table('book')
 			->select('id','name','author','cover','pubtime','introduce','download')
-			->where('name','like',$key)
+			->where('name','like','%'.$key.'%')
 			->orderBy('id','ace')
-			->paginate(1);
+			->paginate(10);
 		return view('frontend.book.list',['lists'=>$lists]);
 	}
 }

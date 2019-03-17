@@ -15,7 +15,8 @@ class CreateRoleAccessTable extends Migration
     {
         Schema::create('role_access', function (Blueprint $table) {
             $table->increments('id');
-            $table->timestamps();
+            $table->unsignedTinyInteger('role_id');
+            $table->unsignedTinyInteger('access_id');
         });
     }
 

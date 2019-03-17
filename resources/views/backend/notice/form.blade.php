@@ -22,10 +22,7 @@
 	<div class="layui-form-item layui-form-text">
 		<label class="layui-form-label">内容</label>
 		<div class="layui-input-block">
-			<!-- 加载编辑器的容器 -->
-		    <script id="container" name="content" type="text/plain" style="width:100%">
-		        {{ isset($data) ? $data->content : '' }}
-		    </script>
+		    <textarea class="layui-textarea" name="content" lay-verify="required" placeholder="请输入内容">{{ isset($data) ? $data->content : '' }}</textarea>
 		</div>
 	</div>
 	<div class="layui-form-item">
@@ -34,12 +31,6 @@
 		</div>
 	</div>
 </form>
-<!-- 配置文件 -->
-<script type="text/javascript" src="/static/admin/ueditor/ueditor.config.js"></script>
-<!-- 编辑器源码文件 -->
-<script type="text/javascript" src="/static/admin/ueditor/ueditor.all.js"></script>
-<!-- 实例化编辑器 -->
-<script type="text/javascript" src="/static/admin/js/app.js"></script>
 <script>
 layui.use(['form','jquery'], function(){
 	var form = layui.form;

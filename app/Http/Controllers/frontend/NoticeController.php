@@ -3,21 +3,20 @@
 namespace App\Http\Controllers\frontend;
 
 use Illuminate\Support\Facades\DB;
-use Illuminate\Http\Request;
 
 /**
- * 文章管理
+ * 通知
  */
-class BookController extends Controller
+class NoticeController extends Controller
 {
 
 	public function content($id)
 	{
 		$data = DB::table('notice')
-			->select('title','content')
-			->where('id',$id)
+			->select('title','content','created_at')
+			->where('id','=',$id)
 			->first();
-		return view('frontend.book.content',['data'=>$data]);
+		return view('frontend.notice.content',['data'=>$data]);
 	}
 
 }

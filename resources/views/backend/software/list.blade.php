@@ -21,7 +21,7 @@
 	<tbody>
 		@foreach($lists as $list)
 		<tr>
-			<td>{{ $list->name }}</td>
+			<td><a href="/software/{{ $list->id }}">{{ $list->name }}</a></td>
 			<td>
 				<a href="{{ Route('b_software_edit',['id'=>$list->id]) }}" class="layui-btn layui-btn-normal layui-btn-sm">编辑</a>
 				<a href="{{ Route('b_software_del',['id'=>$list->id]) }}" class="layui-btn layui-btn-danger layui-btn-sm">刪除</a>

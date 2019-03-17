@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\frontend;
 
-use App\Http\Controllers\frontend\Controller;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 
@@ -12,41 +11,53 @@ use Illuminate\Http\Request;
 class ArticleController extends Controller
 {
 
-	public function list(Request $request)
+	public function list_tag($tag)
 	{
-		$lists = null;
-		if ($request -> has('tag')) {
-			$lists = DB::table('article')
-			->select('id','title','cover','user_id','tag_id','content','created_at')
-			->where('tag_id',$request -> tag)
+		$tag_id = DB::table("tag")
+			->select('id')
+			->where('name','=',$tag)
+			->first();
+
+		$lists = DB::table('article as a')
+			->select('a.id','a.title','a.cover','b.name as user','c.name as tag','a.content','a.created_at')
+			->leftJoin('user as b','b.id','=','a.user_id')
+			->leftJoin('tag as c','c.id','=','a.tag_id')
+			->where('c.id','=',$tag_id->id)
 			->orderBy('created_at','desc')
-			->get();
-		} else {
-			$lists = DB::table('article')
-			->select('id','title','cover','user_id','tag_id','content','created_at')
+			->paginate(10);
+		return view('frontend.article.list',['lists'=>$lists]);
+	}
+
+	public function list()
+	{
+		$lists = DB::table('article as a')
+			->select('a.id','a.title','a.cover','b.name as user','c.name as tag','a.content','a.created_at')
+			->leftJoin('user as b','b.id','=','a.user_id')
+			->leftJoin('tag as c','c.id','=','a.tag_id')
 			->orderBy('created_at','desc')
-			->get();
-		}
+			->paginate(10);
 		return view('frontend.article.list',['lists'=>$lists]);
 	}
 
 	public function content($id)
 	{
 		$data = DB::table('article as a')
-			->select('a.title','b.name as tag','a.user_id as user','a.cover','a.content','a.created_at')
-			->leftJoin('tag as b', 'a.tag_id', '=', 'b.id')
-			->where('a.id',$id)
+			->select('a.title','b.name as user','c.name as tag','a.content','a.created_at')
+			->leftJoin('user as b','b.id','=','a.user_id')
+			->leftJoin('tag as c','c.id','=','a.tag_id')
+			->where('a.id','=',$id)
 			->first();
 		return view('frontend.article.content',['data'=>$data]);
 	}
 
 	public function search($key)
 	{
-		$lists = DB::table('article')
-			->select('title','tag','user','createtime')
-			->where('title',$txt)
-			->orderBy('createtime','desc')
-			->paginate(1);
-		return view('backend.article.list',['lists'=>$lists]);
+		$lists = DB::table('article as a')
+			->select('a.id','a.title','a.cover','b.name as user','c.name as tag','a.content','a.created_at')
+			->leftJoin('user as b','b.id','=','a.user_id')
+			->leftJoin('tag as c','c.id','=','a.tag_id')
+			->where('a.title','like','%'.$key.'%')
+			->paginate(10);
+		return view('frontend.article.list',['lists'=>$lists]);
 	}
 }

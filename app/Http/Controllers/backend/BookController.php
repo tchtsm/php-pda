@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\backend;
 
-use App\Http\Controllers\backend\Controller;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 
@@ -25,7 +24,7 @@ class BookController extends Controller
 	{
 		if ($request -> has('id')) {
 			$data = DB::table('book')
-				-> select('id','name','author','cover','publish','pubtime','intro','menu','download')
+				-> select('id','name','author','cover','publish','pubtime','introduce','menu','download')
 				-> where('id', $request -> id)
 				-> first();
 			if (is_null($data)) {
@@ -46,7 +45,7 @@ class BookController extends Controller
 			'cover' => $request -> file,
 			'publish' => $request -> publish,
 			'pubtime' => $request -> pubtime,
-			'intro' => $request -> intro,
+			'introduce' => $request -> introduce,
 			'menu' => $request -> menu,
 			'download' => $request -> download,
 		];

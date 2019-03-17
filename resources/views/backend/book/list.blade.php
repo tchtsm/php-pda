@@ -28,13 +28,13 @@
 	<tbody>
 		@foreach($lists as $list)
 		<tr>
-			<td>{{ $list->name }}</td>
+			<td><a href="/book/{{ $list->id }}">{{ $list->name }}</a></td>
 			<td>{{ $list->author }}</td>
 			<td>{{ $list->publish }}</td>
 			<td>{{ $list->pubtime }}</td>
 			<td>
-				<a href="" class="layui-btn layui-btn-normal layui-btn-sm">编辑</a>
-				<a href="" class="layui-btn layui-btn-danger layui-btn-sm">删除</a>
+				<a href="{{ route('b_book_edit',['id'=>$list->id]) }}" class="layui-btn layui-btn-normal layui-btn-sm">编辑</a>
+				<a href="{{ route('b_book_del',['id'=>$list->id]) }}" class="layui-btn layui-btn-danger layui-btn-sm">删除</a>
 			</td>
 		</tr>
 		@endforeach

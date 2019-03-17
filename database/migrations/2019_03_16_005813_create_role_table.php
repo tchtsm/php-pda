@@ -16,9 +16,6 @@ class CreateRoleTable extends Migration
         Schema::create('role', function (Blueprint $table) {
             $table->increments('id');
             $table->char('name',2);
-            $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
-            $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP'));
-            $table->softDeletes();
         });
     }
 

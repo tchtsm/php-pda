@@ -1,10 +1,10 @@
 @extends('frontend.layout')
 @section('title')
- | 关于我们
+ | 通知公告
 @endsection
 @section('content')
 	<div class="col-md-12 showboard">
-		<h5>关于我们</h5>
-		<p></p>
+		<h5>{{ $data -> title }}</h5>
+		<p>{{ $data -> content }}</p>
 	</div>
 @endsection

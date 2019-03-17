@@ -15,7 +15,9 @@ class CreateAccessTable extends Migration
     {
         Schema::create('access', function (Blueprint $table) {
             $table->increments('id');
-            $table->timestamps();
+            $table->string('name',5);
+            $table->string('url',20);
+            $table->string('route',20);
         });
     }
 

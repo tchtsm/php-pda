@@ -1,4 +1,5 @@
 var ue = UE.getEditor('container', {
+	initialFrameHeight: 300,
     toolbars: [
         [
 	        'undo', //撤销

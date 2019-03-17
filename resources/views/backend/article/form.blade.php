@@ -89,6 +89,7 @@ layui.use(['form','upload','jquery'], function(){
 		var datas = data.field;
 		var action = data.form.action;
 		datas.file = $('#img').attr('src');
+		// datas.content = encodeURI($('#container').html());
 		$.ajax({
 			url: action,
 			data: datas,

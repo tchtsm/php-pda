@@ -41,19 +41,6 @@ class TagController extends Controller
 	public function store(Request $request)
 	{
 
-		$rules = [
-			'name' => 'required|max:20|min:2|unique:tag'
-		];
-
-		$messages = [
-			'name.required' => '请输入名称',
-			'name.max' => '名称不能多于20位',
-			'name.min' => '名称不能少于2位',
-			'name.unique' => '该标签已经存在'
-		];
-
-		$this->validate($request, $rules, $messages);
-
 		$data = [
 			'name' => $request -> name
 		];

@@ -28,9 +28,9 @@
 	<tbody>
 		@foreach($lists as $list)
 		<tr>
-			<td><a href="{{ Route('f_article_content',['id'=>$list->id]) }}">{{ $list->title }}</a></td>
+			<td><a href="/article/{{ $list->id }}">{{ $list->title }}</a></td>
 			<td>{{ $list->tag }}</td>
-			<td>{{ $list->user_id }}</td>
+			<td>{{ $list->user }}</td>
 			<td>{{ $list->created_at }}</td>
 			<td>
 				<a href="{{ Route('b_article_edit',['id'=>$list->id]) }}" class="layui-btn layui-btn-normal layui-btn-sm">编辑</a>

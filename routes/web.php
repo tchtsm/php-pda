@@ -23,17 +23,18 @@ Route::group(['namespace'=>'frontend'], function () {
 	Route::post('change-password', 'UserController@changePassword')->name('f_change_pass');
 	Route::get('reset-password', 'UserController@resetPassword')->name('f_reset_pass');
 	Route::post('reset-password', 'UserController@resetPassword')->name('f_reset_pass');
-	Route::post('person', 'UserController@person')->name('f_person');
+	Route::get('person', 'UserController@person')->name('f_person');
 	//通知
-	Route::post('notice/{id}', 'NoticeController@content')->name('f_notice_content');
+	Route::get('notice/{id}', 'NoticeController@content')->name('f_notice_content');
 	// 文章文档
 	Route::get('article', 'ArticleController@list')->name('f_article_list');
+	Route::get('article/tag/{tag}', 'ArticleController@list_tag')->name('f_article_list_tag');
 	Route::get('article/{id}', 'ArticleController@content')->name('f_article_content');
-	Route::get('article/search', 'ArticleController@search')->name('f_article_search');
+	Route::get('article/search/{key}', 'ArticleController@search')->name('f_article_search');
 	// 看书推荐
 	Route::get('book', 'BookController@list')->name('f_book_list');
 	Route::get('book/{id}', 'BookController@content')->name('f_book_content');
-	Route::get('book/search', 'BookController@search')->name('f_book_search');
+	Route::get('book/search/{key}', 'BookController@search')->name('f_book_search');
 	// 编辑软件
 	Route::get('software', 'SoftwareController@list')->name('f_software_list');
 	//协会介绍
@@ -52,6 +53,15 @@ Route::group(['prefix'=>'admin','namespace'=>'backend'], function () {
 	//用户
 	Route::get('user/member', 'UserController@member')->name('b_user_member');
 	Route::get('user/manager', 'UserController@manager')->name('b_user_manager');
+	//角色
+	Route::get('role', 'RoleController@list')->name('b_role_list');
+	//权限
+	Route::get('access', 'AccessController@list')->name('b_access_list');
+	Route::get('access/add', 'AccessController@form')->name('b_access_add');
+	Route::post('access/add', 'AccessController@store')->name('b_access_add');
+	Route::get('access/edit', 'AccessController@form')->name('b_access_edit');
+	Route::post('access/edit', 'AccessController@store')->name('b_access_edit');
+	Route::get('access/delete', 'AccessController@delete')->name('b_access_del');
 	//通知
 	Route::get('notice', 'NoticeController@list')->name('b_notice_list');
 	Route::get('notice/add', 'NoticeController@form')->name('b_notice_add');

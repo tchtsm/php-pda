@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\backend;
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 
@@ -39,12 +40,16 @@ class NoticeController extends Controller
 
 	public function store(Request $request)
 	{
+		$user = DB::table('user')
+			->select('department_id')
+			->where('id','=',Auth::id())
+			->first();
 
 		$data = [
 			'title' => $request -> title,
 			'content' => $request -> content,
-			'user_id' => 1,
-			'department_id' => 1,
+			'user_id' => Auth::id(),
+			'department_id' => $user->department_id,
 		];
 
 		try {

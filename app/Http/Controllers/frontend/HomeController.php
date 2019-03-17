@@ -8,13 +8,14 @@ class HomeController extends Controller
 {
 	public function index()
 	{
-		$notices = DB::table('notice')
-			->select('id','title')
-			->orderBy('created_at','desc')
-			->limit(5)
+		$notices = DB::table('notice as a')
+			->select('a.id','a.title','b.name as department','a.created_at')
+			->leftJoin('department as b','b.id','=','a.department_id')
+			->orderBy('a.created_at','desc')
+			->limit(7)
 			->get();
 		$articles = DB::table('article')
-			->select('id','title')
+			->select('id','title','cover')
 			->limit(5)
 			->get();
 		return view('frontend.home.index',['notices'=>$notices,'articles'=>$articles]);

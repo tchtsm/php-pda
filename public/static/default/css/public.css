@@ -51,10 +51,19 @@ div.bg-top{
 	text-decoration: none;
 }
 img.cover{
-	width: 125px; 
-	height: 170px;
+	width: 100%;
 	border: 1px solid #ddd;
 	padding: 3px
+}
+img.soft{
+	height: 135px;
+}
+img.book{
+	width: 125px;
+	height: 170px;
+}
+img.article{
+	height: 130px;
 }
 /*右边栏*/
 .file li{
@@ -70,6 +79,7 @@ img.cover{
 }
 .carousel{
 	padding-left: 0;
+	height: 250px;
 }
 .welcome{
 	background: #343a40;
@@ -84,4 +94,21 @@ img.cover{
 .welcome h5{
 	color: white;
 	text-align: center;
+}
+/*展示板  通知 其他类*/
+.showboard{
+	padding: 20px;
+	margin-bottom: 20px;
+	background: white;
+	min-height: calc(100vh - 148px);
+}
+.showboard > h5{
+	width: 100%;
+	text-align: center;
+	padding: 5px 0;
+	border-bottom: 1px dashed #ccc;
+}
+.showboard > p{
+	width: 70%;
+	margin: auto;
 }

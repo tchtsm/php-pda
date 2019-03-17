@@ -21,7 +21,6 @@ class CreateArticleTable extends Migration
             $table->string('cover',100);
             $table->text('content');
             $table->unsignedInteger('user_id');
-            $table->unsignedTinyInteger('department_id');
             $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP'));
             $table->softDeletes();

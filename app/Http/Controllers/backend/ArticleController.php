@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\backend;
 
 use App\Http\Controllers\backend\Controller;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 
@@ -15,8 +16,9 @@ class ArticleController extends Controller
 	public function list()
 	{
 		$lists = DB::table('article as a')
-			->select('a.id','a.title','b.name as tag','a.user_id','a.created_at')
-			->leftJoin('tag as b', 'a.tag_id', '=', 'b.id')
+			->select('a.id','a.title','c.name as tag','b.name as user','a.created_at')
+			->leftJoin('user as b','b.id','=','a.user_id')
+			->leftJoin('tag as c','c.id','=','a.tag_id')
 			->orderBy('a.created_at','desc')
 			->paginate(10);
 		return view('backend.article.list',['lists'=>$lists]);
@@ -51,13 +53,12 @@ class ArticleController extends Controller
 			'tag_id' => $request -> tag_id,
 			'cover' => $request -> file,
 			'content' => $request -> content,
-			'user_id' => 1,
-			'department_id' => 1,
+			'user_id' => Auth::id(),
 		];
 
 		try {
 			if ($request -> has('id')) {
-				unset($data['user_id'], $data['department_id']);
+				unset($data['user_id']);
 				DB::table('article')
 					-> where('id', $request -> id)
 					-> update($data);

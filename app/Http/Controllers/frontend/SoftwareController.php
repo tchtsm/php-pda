@@ -17,7 +17,7 @@ class SoftwareController extends Controller
 		$lists = DB::table('software')
 			->select('id','name','cover','introduce')
 			->orderBy('id','asc')
-			->get();
+			->paginate(10);
 		return view('frontend.software.list',['lists'=>$lists]);
 	}
 

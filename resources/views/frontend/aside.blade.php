@@ -21,7 +21,7 @@
 	    </div>
 	    <ul>
 	    	@foreach($tags as $tag)
-				<li><a href="{{ route('f_article_list',['tag'=>$tag->id]) }}">{{ $tag -> name }}</a></li>
+				<li><a href="/article/tag/{{ $tag->name }}">{{ $tag -> name }}</a></li>
 			@endforeach
 		</ul>
 	</div>
