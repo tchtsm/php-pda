@@ -18,6 +18,7 @@ class CreateAccessTable extends Migration
             $table->string('name',5);
             $table->string('url',20);
             $table->string('route',20);
+            $table->unisignedTinyInteger('level');
         });
     }
 
