@@ -9,7 +9,7 @@ function layuiXtree(options) {
     var _this = this;
     _this._containerid = options.elem;
     _this._container = document.getElementById(options.elem); //容器
-    // _this._container.style.minHeight = "100px";
+    _this._container.style.minHeight = "100px";
     _this._options = options;
     _this.Loading(options);
 }

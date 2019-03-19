@@ -5,7 +5,7 @@
 	<meta charset="utf-8">
 	<meta name="csrf-token" content="{{ csrf_token() }}">
 	<link rel="stylesheet" type="text/css" href="/static/admin/layui/css/layui.css">
-	<link rel="stylesheet" type="text/css" href="/static/admin/css/role.css">
+	@yield('css')
 	<link rel="icon" type="image/x-icon" href="/static/default/images/icon.png">
 	<script type="text/javascript" src="/static/admin/layui/layui.js"></script>
 </head>
@@ -73,5 +73,6 @@ layui.use(['element','jquery'], function(){
     });
 });
 </script>
+@yield('javascript')
 </body>
 </html>
