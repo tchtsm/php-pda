@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateRoleAccessTable extends Migration
+class CreateMenuTabel extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,9 @@ class CreateRoleAccessTable extends Migration
      */
     public function up()
     {
-        Schema::create('role_access', function (Blueprint $table) {
-            $table->unsignedTinyInteger('role_id');
-            $table->unsignedTinyInteger('access_id');
+        Schema::create('menu', function (Blueprint $table) {
+            $table->increments('id');
+            $table->char('name',4);
         });
     }
 
@@ -26,6 +26,6 @@ class CreateRoleAccessTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('role_access');
+        Schema::dropIfExists('menu_tabel');
     }
 }

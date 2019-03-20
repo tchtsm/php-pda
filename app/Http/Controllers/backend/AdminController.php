@@ -51,7 +51,7 @@ class AdminController extends Controller
 		}
     }
 
-	public function logout()
+	public function logout(Request $request)
 	{
 		$this->guard()->logout();
         // $request->session()->forget($this->guard()->getName());

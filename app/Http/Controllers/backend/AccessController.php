@@ -13,27 +13,37 @@ class AccessController extends Controller
 
 	public function list()
 	{
-		$lists = DB::table('access')
-			->select('id','name','url','route')
-			->orderBy('id','asc')
+		$lists = DB::table('access as a')
+			->select('a.id','a.name','a.url','b.name as menu')
+			->leftJoin('menu as b','b.id','=','a.menu_id')
+			->orderBy('a.id','asc')
 			->paginate(10);
 		return view('backend.access.list',['lists'=>$lists]);
 	}
 
 	public function form(Request $request)
 	{
+
+		$menus = DB::table('menu')
+			->select('id','name')
+			->get();
+		$parents = DB::table('access')
+			->select('id','name')
+			->where('menu_id','=',1)
+			->get();
+
 		if ($request -> has('id')) {
 			$data = DB::table('access')
-				-> select('id','name','url','route')
+				-> select('id','name','url','menu_id','parent_id')
 				-> where('id', $request -> id)
 				-> first();
 			if (is_null($data)) {
 				return '不存在';
 			}else{
-				return view('backend.access.form', ['data' => $data]);
+				return view('backend.access.form', ['data'=>$data,'menus'=>$menus,'parents'=>$parents]);
 			}
 		}else{
-			return view('backend.access.form');
+			return view('backend.access.form',['menus'=>$menus,'parents'=>$parents]);
 		}
 	}
 
@@ -42,7 +52,8 @@ class AccessController extends Controller
 		$data = [
 			'name' => $request -> name,
 			'url' => $request -> url,
-			'route' => $request -> route,
+			'menu_id' => $request -> menu_id,
+			'parent_id' =>$request -> parent_id
 		];
 
 		try {

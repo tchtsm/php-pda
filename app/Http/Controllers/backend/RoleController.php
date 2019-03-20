@@ -25,17 +25,27 @@ class RoleController extends Controller
 	{
 		$josn_arr = array();
 
-		$res = DB::table('access as a')
-			->select('a.id','a.name')
+		$access_all = DB::table('access')
+			->select('id','name')
+			->where('menu_id','=',1)
+			->orderBy('id')
+			->get();
+
+		$access_one = DB::table('access as a')
+			->select('a.id')
 			->leftJoin('role_access as b','b.access_id','=','a.id')
 			->leftJoin('role as c','c.id','=','b.role_id')
 			->where('c.id','=',$request -> id)
 			->get();
 		
-		foreach ($res as $key => $val) {
-			$josn_arr[$key] = array('title':$val -> name,'')
+		foreach ($access_all as $val) {
+			$josn_arr[''.$val->id] = array('title'=>$val -> name,'value' => $val->id);
 		}
-		return json_encode($res);
+		foreach ($access_one as $val) {
+			$josn_arr[''.$val->id]['checked'] = 'true';
+		}
+
+		return json_encode(array_values($josn_arr));
 	}
 
 	public function edit(Request $request)

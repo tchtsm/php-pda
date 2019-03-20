@@ -26,9 +26,34 @@
 		</div>
 	</div>
 	<div class="layui-form-item">
-	    <label class="layui-form-label">route</label>
+	    <label class="layui-form-label">等级</label>
 	    <div class="layui-input-block">
-			<input type="text" name="route" required  lay-verify="required" placeholder="请输入route" autocomplete="off" class="layui-input" value="{{ isset($data) ? $data->route : '' }}">
+			<select name="menu_id">
+				@foreach($menus as $menu)
+					@if(isset($data))
+						@if($data->menu_id == $menu->id)
+							<option value="{{ $menu->id }}" selected="">{{ $menu->name }}</option>
+						@endif
+					@endif
+					<option value="{{ $menu->id }}">{{ $menu->name }}</option>
+				@endforeach
+			</select>
+		</div>
+	</div>
+	<div class="layui-form-item">
+	    <label class="layui-form-label">等级</label>
+	    <div class="layui-input-block">
+			<select name="parent_id">
+				<option value="0">无上级菜单</option>
+				@foreach($parents as $parent)
+					@if(isset($data))
+						@if($data->parent_id == $parent->id)
+							<option value="{{ $parent->id }}" selected="">{{ $parent->name }}</option>
+						@endif
+					@endif
+					<option value="{{ $parent->id }}">{{ $parent->name }}</option>
+				@endforeach
+			</select>
 		</div>
 	</div>
 	<div class="layui-form-item">

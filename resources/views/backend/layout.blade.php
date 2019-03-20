@@ -29,7 +29,9 @@
 	    <div class="layui-side-scroll">
 			<!-- 左侧导航区域（可配合layui已有的垂直导航） -->
 			<ul class="layui-nav layui-nav-tree"  lay-filter="test">
-				<li class="layui-nav-item"><a href="{{ route('b_notice_list') }}">通知公告</a></li>
+				@foreach($menus as $menu)
+					<li class="layui-nav-item"><a href="{{ $menu->url }}">{{ $menu->name }}</a></li>
+				@endforeach
 				<li class="layui-nav-item"><a href="{{ route('b_article_list') }}">文章管理</a></li>
 				<li class="layui-nav-item"><a href="{{ route('b_book_list') }}">书籍管理</a></li>
 				<li class="layui-nav-item"><a href="{{ route('b_software_list') }}">软件管理</a></li>
