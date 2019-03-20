@@ -49,7 +49,7 @@
 </table>
 {{ $lists -> links('backend.page') }}
 <form class="layui-form" id="role-form" action="{{ route('b_role_edit') }}">
-	<input type="hidden" name="id">
+	<input type="hidden" name="id" id="role_id">
 	<div id="xtree"></div>
 	<button class="layui-btn layui-btn-sm layui-btn-info" lay-submit lay-filter="formDemo">确定</button>
 	<button class="layui-btn layui-btn-sm layui-btn-danger" id="role-close">关闭</button>
@@ -74,6 +74,7 @@
 				success:function(msg){
 					if (msg.status==200) {
 						layer.msg(msg.txt, {icon:1});
+						$("#role-form").hide();
 					}else{
 						layer.msg(msg.txt, {icon:5});
 					}
@@ -159,6 +160,7 @@
 
 		var active = {
 		    editAccess: function() {
+		    	$('#role_id').val(this.id);
 		    	$.ajax({
 					url: "{{ route('b_role_json') }}",
 					data: {'id':this.id},
@@ -166,6 +168,8 @@
 					dataType: 'json',
 					success:function(msg){
 						tree(msg);
+						sleep(200);
+						$('input[type="checkbox"]').attr('name','access[]');
 					},
 					error:function(xhr){
 						layer.msg('提交出错', {icon:5, anim:6});

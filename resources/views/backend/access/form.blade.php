@@ -28,14 +28,14 @@
 	<div class="layui-form-item">
 	    <label class="layui-form-label">等级</label>
 	    <div class="layui-input-block">
-			<select name="menu_id">
-				@foreach($menus as $menu)
+			<select name="menulv_id">
+				@foreach($menulvs as $menulv)
 					@if(isset($data))
-						@if($data->menu_id == $menu->id)
-							<option value="{{ $menu->id }}" selected="">{{ $menu->name }}</option>
+						@if($data->menulv_id == $menulv->id)
+							<option value="{{ $menulv->id }}" selected="">{{ $menulv->name }}</option>
 						@endif
 					@endif
-					<option value="{{ $menu->id }}">{{ $menu->name }}</option>
+					<option value="{{ $menulv->id }}">{{ $menulv->name }}</option>
 				@endforeach
 			</select>
 		</div>

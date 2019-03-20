@@ -27,7 +27,7 @@ class RoleController extends Controller
 
 		$access_all = DB::table('access')
 			->select('id','name')
-			->where('menu_id','=',1)
+			->where('menulv_id','=',1)
 			->orderBy('id')
 			->get();
 
@@ -39,7 +39,7 @@ class RoleController extends Controller
 			->get();
 		
 		foreach ($access_all as $val) {
-			$josn_arr[''.$val->id] = array('title'=>$val -> name,'value' => $val->id);
+			$josn_arr[''.$val->id] = array('title'=>$val -> name,'value'=>$val->id);
 		}
 		foreach ($access_one as $val) {
 			$josn_arr[''.$val->id]['checked'] = 'true';
@@ -50,17 +50,23 @@ class RoleController extends Controller
 
 	public function edit(Request $request)
 	{
-		// try {
-		// 		DB::table('notice')
-		// 			-> where('id', $request -> id)
-		// 			-> update($data);
-		// 	}else {
-		// 		DB::table('notice') -> insert($data);
-		// 	}
-		// 	return json_encode(array('txt'=>"保存成功",'status'=>200));
-		// } catch (Exception $e) {
-		// 	return json_encode(array('txt'=>"保存失败",'status'=>500));
-		// }
+		try {
+			DB::table('role_access')
+				-> where('role_id', $request -> id)
+				-> delete();
+			if ($request -> access != null) {
+				$data = array();
+				$access = $request -> access;
+				for ($i=1; $i <= count($access); $i++) { 
+					array_push($data, array('role_id'=>$request -> id, 'access_id' => $access[$i]));
+				}
+				// return $data;
+				DB::table('role_access') -> insert($data);
+			}
+			return json_encode(array('txt'=>"保存成功",'status'=>200));
+		} catch (Exception $e) {
+			return json_encode(array('txt'=>"保存失败",'status'=>500));
+		}
 	}
 
 }

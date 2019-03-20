@@ -56,7 +56,7 @@ Route::group(['prefix'=>'admin','namespace'=>'backend'], function () {
 	//角色
 	Route::get('role', 'RoleController@list')->name('b_role_list');
 	Route::get('role/json', 'RoleController@json')->name('b_role_json');
-	Route::get('role/edit', 'RoleController@json')->name('b_role_edit');
+	Route::post('role/edit', 'RoleController@edit')->name('b_role_edit');
 	//权限
 	Route::get('access', 'AccessController@list')->name('b_access_list');
 	Route::get('access/add', 'AccessController@form')->name('b_access_add');

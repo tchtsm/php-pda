@@ -28,7 +28,7 @@
 		<tr>
 			<td>{{ $list->name }}</td>
 			<td>{{ $list->url }}</td>
-			<td>{{ $list->menu }}</td>
+			<td>{{ $list->menulv }}</td>
 			<td>
 				<a href="{{ route('b_access_edit',['id'=>$list->id]) }}" class="layui-btn layui-btn-normal layui-btn-sm">编辑</a>
 				<a href="{{ route('b_access_del',['id'=>$list->id]) }}" class="layui-btn layui-btn-danger layui-btn-sm">刪除</a>
