@@ -25,11 +25,32 @@
 			<td>{{ $list->name }}</td>
 			<td>
 				<a href="{{ route('b_tag_edit',['id'=>$list->id]) }}" class="layui-btn layui-btn-normal layui-btn-sm">编辑</a>
-				<a href="{{ route('b_tag_del',['id'=>$list->id]) }}" class="layui-btn layui-btn-danger layui-btn-sm">刪除</a>
+				<button class="layui-btn layui-btn-danger layui-btn-sm delete">刪除</button>
 			</td>
 		</tr>
 		@endforeach
 	</tbody>
 </table>
 {{ $lists->links('backend.page') }}
+@endsection
+
+@section('javascript')
+<script type="text/javascript">
+layui.use(['layer','jquery'], function() {
+	var layer = layui.layer, $ = layui.jquery;
+
+	$('.delete').click(function(){
+			layer.alert('确定要删除？', {
+			skin: 'layui-layer-molv',
+			title: '提示',
+			closebtn: 1,
+			btn: ['确定', '取消'],
+			icon: 6,
+			yes: function () {
+				location.reload();
+			}
+		});
+	});
+});
+</script>
 @endsection

@@ -1,8 +1,7 @@
 @extends('backend.layout')
 @section('content')
 <div class="btn">
-	<a href="" class="layui-btn">添加</a>
-	<form action="" style="float:right">
+	<form action="" style="float:right;margin-bottom:10px">
 		<input type="text" name="title" required  lay-verify="required" placeholder="请输入搜索內容" autocomplete="off" class="layui-input" style="width:300px;float:left">
 		<button class="layui-btn layui-btn-warm">搜索</button>
 	</form>
@@ -48,8 +47,8 @@
 			<td>{{ $list->qq }}</td>
 			<td>{{ $list->email }}</td>
 			<td>
-				<button class="layui-btn layui-btn-normal layui-btn-sm" id="editPart">修改部门</button>
-				<button class="layui-btn layui-btn-info layui-btn-sm" id="editRole">修改身份</button>
+				<button class="layui-btn layui-btn-normal layui-btn-sm editPart" id="editPart">修改部门</button>
+				<button class="layui-btn layui-btn-info layui-btn-sm editRole" id="editRole">修改身份</button>
 			</td>
 		</tr>
 		@endforeach
@@ -57,17 +56,19 @@
 </table>
 @endsection
 
+@section('form')
+<form>
+	<input type="text" name="">
+</form>
+@endsection
+
 @section('javascript')
 <script type="text/javascript">
 layui.use(['layer','jquery'], function() {
 	var layer = layui.layer, $ = layui.jquery;
 
-	layer.open({
-		type: 1,
-		title: '修改部门',
-		skin: 'layui-layer-rim', //加上边框
-		area: ['350px', '360px'], //宽高
-		content: $html('<p>45464</p>')  //调到新增页面
+	$('.editPart').click(function(){
+		alert();
 	});
 });
 </script>
