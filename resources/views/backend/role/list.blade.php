@@ -168,8 +168,9 @@
 					dataType: 'json',
 					success:function(msg){
 						tree(msg);
-						sleep(200);
+						setTimeout(200);
 						$('input[type="checkbox"]').attr('name','access[]');
+						$('input[type="checkbox"]').eq(0).removeAttr('name');
 					},
 					error:function(xhr){
 						layer.msg('提交出错', {icon:5, anim:6});

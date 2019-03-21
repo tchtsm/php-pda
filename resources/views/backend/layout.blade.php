@@ -30,28 +30,19 @@
 			<!-- 左侧导航区域（可配合layui已有的垂直导航） -->
 			<ul class="layui-nav layui-nav-tree"  lay-filter="test">
 				@foreach($menus as $menu)
-					<li class="layui-nav-item"><a href="{{ $menu->url }}">{{ $menu->name }}</a></li>
+					@if(!empty($menu['child']))
+						<li class="layui-nav-item">
+				        	<a href="{{ $menu['url'] }}">{{ $menu['name'] }}</a>
+							@foreach($menu['child'] as $child)
+					        	<dl class="layui-nav-child">
+						            <dd><a href="{{ $child['url'] }}">{{ $child['name'] }}</a></dd>
+					        	</dl>
+				        	@endforeach
+				        </li>
+					@else
+						<li class="layui-nav-item"><a href="{{ $menu['url'] }}">{{ $menu['name'] }}</a></li>
+					@endif
 				@endforeach
-				<li class="layui-nav-item"><a href="{{ route('b_article_list') }}">文章管理</a></li>
-				<li class="layui-nav-item"><a href="{{ route('b_book_list') }}">书籍管理</a></li>
-				<li class="layui-nav-item"><a href="{{ route('b_software_list') }}">软件管理</a></li>
-				<li class="layui-nav-item"><a href="{{ route('b_user_member') }}">会员管理</a></li>
-				<li class="layui-nav-item"><a href="javascript:;">日志管理</a></li>
-				<li class="layui-nav-item">
-		        	<a class="" href="javascript:;">基本管理</a>
-		        	<dl class="layui-nav-child">
-			            <dd><a href="{{ Route('b_tag_list') }}">标签管理</a></dd>
-		        	</dl>
-		        </li>
-		        <li class="layui-nav-item">
-		        	<a class="" href="javascript:;">系统管理</a>
-		        	<dl class="layui-nav-child">
-			            <dd><a href="{{ route('b_user_manager') }}">用户管理</a></dd>
-			            <dd><a href="javascript:;">部门管理</a></dd>
-			            <dd><a href="{{ route('b_role_list') }}">角色管理</a></dd>
-			            <dd><a href="{{ route('b_access_list') }}">权限管理</a></dd>
-		        	</dl>
-		        </li>
 	    	</ul>
 	    </div>
 	</div>

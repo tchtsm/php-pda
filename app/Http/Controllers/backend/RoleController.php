@@ -57,7 +57,7 @@ class RoleController extends Controller
 			if ($request -> access != null) {
 				$data = array();
 				$access = $request -> access;
-				for ($i=1; $i <= count($access); $i++) { 
+				for ($i=0; $i < count($access); $i++) { 
 					array_push($data, array('role_id'=>$request -> id, 'access_id' => $access[$i]));
 				}
 				// return $data;

@@ -9,6 +9,7 @@
 </div>
 <table class="layui-table">
 	<colgroup>
+	    <col width="9%">
 	    <col width="10%">
 	    <col width="10%">
 	    <col width="10%">
@@ -17,8 +18,7 @@
 	    <col width="10%">
 	    <col width="10%">
 	    <col width="10%">
-	    <col width="10%">
-	    <col width="10%">
+	    <col width="11%">
 	    <col>
 	</colgroup>
 	<thead>
@@ -48,10 +48,27 @@
 			<td>{{ $list->qq }}</td>
 			<td>{{ $list->email }}</td>
 			<td>
-				<a href="" class="layui-btn layui-btn-normal layui-btn-sm">修改身份</a>
+				<button class="layui-btn layui-btn-normal layui-btn-sm" id="editPart">修改部门</button>
+				<button class="layui-btn layui-btn-info layui-btn-sm" id="editRole">修改身份</button>
 			</td>
 		</tr>
 		@endforeach
 	</tbody>
 </table>
+@endsection
+
+@section('javascript')
+<script type="text/javascript">
+layui.use(['layer','jquery'], function() {
+	var layer = layui.layer, $ = layui.jquery;
+
+	layer.open({
+		type: 1,
+		title: '修改部门',
+		skin: 'layui-layer-rim', //加上边框
+		area: ['350px', '360px'], //宽高
+		content: $html('<p>45464</p>')  //调到新增页面
+	});
+});
+</script>
 @endsection
