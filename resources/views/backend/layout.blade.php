@@ -55,7 +55,6 @@
 	    程序设计协会
 	</div>
 </div>
-@yield('form')
 <script>
 layui.use(['element','jquery'], function(){
 	var element = layui.element;

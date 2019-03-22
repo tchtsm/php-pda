@@ -51,8 +51,16 @@ Route::group(['prefix'=>'admin','namespace'=>'backend'], function () {
 	Route::post('login', 'AdminController@login')->name('b_login');
 	Route::get('logout', 'AdminController@logout')->name('b_logout');
 	//用户
-	Route::get('user/member', 'UserController@member')->name('b_user_member');
-	Route::get('user/manager', 'UserController@manager')->name('b_user_manager');
+	Route::get('user/member', 'UserController@member')->name('b_member');
+	Route::post('user/member/department-edit', 'UserController@department_edit')->name('b_member_department_edit');
+	Route::post('user/member/role-edit', 'UserController@role_edit')->name('b_member_role_edit');
+	Route::get('user/manager', 'UserController@manager')->name('b_manager');
+	//部门
+	Route::get('department', 'DepartmentController@list')->name('b_department_list');
+	Route::get('department/add', 'DepartmentController@form')->name('b_department_add');
+	Route::post('department/add', 'DepartmentController@store')->name('b_department_add');
+	Route::get('department/edit', 'DepartmentController@form')->name('b_department_edit');
+	Route::post('department/edit', 'DepartmentController@store')->name('b_department_edit');
 	//角色
 	Route::get('role', 'RoleController@list')->name('b_role_list');
 	Route::get('role/json', 'RoleController@json')->name('b_role_json');
@@ -63,7 +71,6 @@ Route::group(['prefix'=>'admin','namespace'=>'backend'], function () {
 	Route::post('access/add', 'AccessController@store')->name('b_access_add');
 	Route::get('access/edit', 'AccessController@form')->name('b_access_edit');
 	Route::post('access/edit', 'AccessController@store')->name('b_access_edit');
-	Route::get('access/delete', 'AccessController@delete')->name('b_access_del');
 	//通知
 	Route::get('notice', 'NoticeController@list')->name('b_notice_list');
 	Route::get('notice/add', 'NoticeController@form')->name('b_notice_add');

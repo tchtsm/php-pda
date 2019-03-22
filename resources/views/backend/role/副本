@@ -48,6 +48,12 @@
 	</tbody>
 </table>
 {{ $lists -> links('backend.page') }}
+<form class="layui-form" id="role-form" action="{{ route('b_role_edit') }}">
+	<input type="hidden" name="id" id="role_id">
+	<div id="xtree"></div>
+	<button class="layui-btn layui-btn-sm layui-btn-info" lay-submit lay-filter="formDemo">确定</button>
+	<button class="layui-btn layui-btn-sm layui-btn-danger" id="role-close">关闭</button>
+</form>
 @endsection
 
 @section('javascript')
@@ -55,13 +61,6 @@
 <script type="text/javascript">
 	layui.use(['layer','form','jquery'], function() {
 		var $ = layui.jquery, layer = layui.layer, form = layui.form;
-
-		var form = 
-			'<form class="layui-form" action="{{ route("b_role_edit") }}">' +
-				'<input type="hidden" name="id">' +
-				'<div id="xtree"></div>' +
-				'<button class="layui-btn layui-btn-sm layui-btn-info" lay-submit lay-filter="formDemo">确定</button>' +
-			'</form>';
 
 		/*监听权限表单提交*/
 		form.on('submit(formDemo)', function(data){
@@ -75,6 +74,7 @@
 				success:function(msg){
 					if (msg.status==200) {
 						layer.msg(msg.txt, {icon:1});
+						$("#role-form").hide();
 					}else{
 						layer.msg(msg.txt, {icon:5});
 					}
@@ -94,7 +94,7 @@
 	            , data: json       //必填
 	            , isopen: false  //加载完毕后的展开状态，默认值：true
 	            , ckall: true    //启用全选功能，默认值：false
-	            //, ckallback: function () { } //全选框状态改变后执行的回调函数
+	            , ckallback: function () { } //全选框状态改变后执行的回调函数
 	            , icon: {        //三种图标样式，更改几个都可以，用的是layui的图标
 	                open: "&#xe7a0;"       //节点打开的图标
 	                , close: "&#xe622;"    //节点关闭的图标
@@ -176,14 +176,7 @@
 						layer.msg('提交出错', {icon:5, anim:6});
 		            }
 				});
-		    	layer.open({
-		    		type: 1,
-		    		skin: 'layui-layer-rim',
-		    		title: '修改权限',
-		    		area: ['350px','350px'],
-		    		content: form
-		    	});
-		    	form.render();
+		    	$('#role-form').show();
 		    }
 		};
   
